@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { fetchAllReviews } from "../api"
-
 export default function List (){
   const [reviews, setReviews] = useState([])
   useEffect(()=>{
