@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react"
 import { fetchAllReviews } from "../api"
-export default function List (){
+
+export default function ArticleList ({isLoading, setIsLoading}){
   const [reviews, setReviews] = useState([])
+
   useEffect(()=>{
+    setIsLoading(true)
     fetchAllReviews().then((reviews)=>{
       setReviews(reviews)
+      setIsLoading(false)
     })
-  })
+  },[setIsLoading])
 
   const displayReviews = (review)=>{
     return (
-      <div className="review-card" key={review.review_id}>
+      <article className="review-card" key={review.review_id}>
         <div className="review-header">
           <p> Posted by <span>{review.owner}</span></p>
           <p>{review.created_at}</p>
@@ -23,11 +27,11 @@ export default function List (){
           <p>{review.votes} Votes</p>
           <p>Comments</p>
         </div>
-      </div>
+      </article>
     )
   }
 
-  return (
+  return isLoading?<h1>Loading...</h1>:(
     <section id='reviews-container'>
       {reviews.map((review)=>{
         return displayReviews(review)
