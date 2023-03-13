@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../api";
 export default function SingleReview() {
   const [singleReview, setSingleReview] = useState({});
-  const [review_id, setReviewId] = useState(1)
+  const [review_id, setReviewId] = useState(null)
+  setReviewId(1)
 
   useEffect(() => {
     fetchSingleReview(review_id).then((review) => {
       setSingleReview(review);
     });
-  }, []);
+  }, [review_id]);
 
   const displaySingleReview = (review) => {
     return (
