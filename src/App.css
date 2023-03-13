@@ -6,29 +6,29 @@
   color: #61dafb;
 }
 
-body{
+body {
   background: #d7d9de;
 }
 
-#single-review{
+#single-review {
   width: 60%;
   margin: auto;
 }
 
-.single-review-card{
+.single-review-card {
   margin: 10px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
 }
-.review-card-header{
+.review-card-header {
   display: flex;
   justify-content: left;
   margin-bottom: 10px;
   padding: 0px;
   border-radius: 5px;
   border: 2px solid #d7d9de;
-  background:#fff ;
+  background: #fff;
 }
 
 .review-card-header p {
@@ -36,14 +36,14 @@ body{
   padding: 20px;
 }
 
-.review-card-body{
+.review-card-body {
   margin: 0px;
   border: 2px solid #d7d9de;
   border-radius: 5px;
   background: #fff;
 }
 
-.review-card-body p{
+.review-card-body p {
   padding: 30px;
   line-height: 2.5;
   font-size: 16px;
@@ -53,16 +53,17 @@ body{
 
 .review-card-body > img {
   max-width: 100%;
-  padding-bottom:30px;
+  padding-bottom: 30px;
+  max-width: 100%;
 }
 
-.review-card-tags{
+.review-card-tags {
   display: flex;
   background: white;
   flex: 1;
 }
 
-.review-card-tags span > p{
+.review-card-tags span > p {
   padding: 10px 20px;
   border-radius: 30px;
 }
@@ -79,23 +80,23 @@ body{
   background: #89d6c2;
 }
 
-.review-card-footer{   
+.review-card-footer {
   display: flex;
   color: #fff;
   background: white;
   border: 2px solid #d7d9de;
-  border-radius: 5px;
+  border-radius: 15px 0px 15px 15px;
 }
-.review-card-stats{
+.review-card-stats {
   display: flex;
   margin: 0px 10px;
 }
 
 .review-card-stats > span {
-  margin:0px 10px ;
+  margin: 0px 10px;
 }
 
-.review-card-stats > span > p{
+.review-card-stats > span > p {
   border-radius: 7px;
   background: #364c55;
   padding: 10px 22px;
@@ -104,11 +105,11 @@ body{
 @media screen and (max-width: 1223px) {
   #single-review {
     width: 80%;
-}
+  }
 }
 
 @media screen and (max-width: 921px) {
   #single-review {
     width: 100%;
-}
+  }
 }
