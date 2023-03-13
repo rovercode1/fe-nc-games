@@ -14,18 +14,17 @@ export default function SingleReview({ review_id, isLoading, setIsLoading }) {
   }, [setIsLoading, review_id]);
 
   const displaySingleReview = (review) => {
-    console.log();
     return (
       <div className="single-review-card" key={review.review_id}>
+        <div className="loading">
+        </div>
         <div className="review-card-header">
-          <p>Posted by {review.owner}</p>
-          
+          <p>Posted by <span>{review.owner}</span></p>  
         </div>
         <div className="review-card-body">
           <h2>{review.title}</h2>
           <img src={review.review_img_url} alt={review.title}></img>
-          <p>{review.review_body}</p>
-          
+          <p>{review.review_body}</p>          
         </div>
         <div className="review-card-footer">
           <div className="review-card-tags">
@@ -38,16 +37,14 @@ export default function SingleReview({ review_id, isLoading, setIsLoading }) {
           </div>
           <div className="review-card-stats">
             <span><p>{review.votes} Votes</p></span>
-            <span>  {!isLoading ? (<p> Posted <ReactTimeAgo date={new Date(review.created_at)} locale="en-US" /> </p>) : (false)}</span>
-            
-          
+            <span>{!isLoading ? (<p> Posted <ReactTimeAgo date={new Date(review.created_at)} locale="en-US" /> </p>) : (false)}</span>         
           </div>
         </div>
       </div>
     );
   };
   return isLoading ? (
-    <h1>Loading...</h1>
+    <h1 className="loading">Loading...</h1>
   ) : (
     <section id="single-review">{displaySingleReview(singleReview)}</section>
   );

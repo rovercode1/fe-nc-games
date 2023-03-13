@@ -32,8 +32,14 @@ body {
 }
 
 .review-card-header p {
-  margin: 0px 10px;
-  padding: 20px;
+  margin: 10px 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.review-card-header p:hover{
+  transition: 0.8s ;
+  background-color: rgb(233, 233, 233);
 }
 
 .review-card-body {
@@ -68,16 +74,27 @@ body {
   border-radius: 30px;
 }
 
+
 .review-card-tags > span {
   margin: 0px 20px;
+  cursor: pointer;
 }
 
 .single-category {
   background: red;
 }
 
+.single-category:hover {
+  transition: 0.8;
+  background: rgb(240, 98, 98);
+}
+
 .single-designer {
   background: #89d6c2;
+}
+
+.single-designer:hover{
+  background: #b1d7cd;
 }
 
 .review-card-footer {
@@ -97,11 +114,15 @@ body {
 }
 
 .review-card-stats > span > p {
+  cursor: pointer;
   border-radius: 7px;
   background: #364c55;
   padding: 10px 22px;
 }
 
+.review-card-stats > span > p:hover {
+  background: #7f878b;
+}
 @media screen and (max-width: 1223px) {
   #single-review {
     width: 80%;
@@ -113,3 +134,5 @@ body {
     width: 100%;
   }
 }
+
+
