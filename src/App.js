@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/reviews/:review_id' element={SingleReview}>
+        <Route path='/reviews/:review_id' element={<SingleReview/>}>
         </Route>
       </Routes>
     </div>
