@@ -56,6 +56,10 @@ body{
   padding-bottom:30px;
 }
 
+.review-card-body > img {
+  max-width: 100%;
+}
+
 .review-card-tags{
   display: flex;
   background: white;
