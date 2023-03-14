@@ -2,25 +2,143 @@
   text-align: center;
 }
 
-body{
-  background:#f8f8f8;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
 
+body {
+  background: #d7d9de;
+
+}
+
+#single-review {
+  width: 60%;
+  margin: auto;
+}
+
+.single-review-card {
+  margin: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.review-card-header {
+  display: flex;
+  justify-content: left;
+  margin-bottom: 10px;
+  padding: 0px;
+  border-radius: 5px;
+  border: 2px solid #d7d9de;
+  background: #fff;
+}
+
+.review-card-header p {
+  margin: 10px 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.review-card-header p:hover{
+  transition: 0.8s ;
+  background-color: rgb(233, 233, 233);
+}
+
+.review-card-body {
+  margin: 0px;
+  border: 2px solid #d7d9de;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.review-card-body p {
+  padding: 30px;
+  line-height: 2.5;
+  font-size: 16px;
+  text-align: left;
+  border-top: 2px solid #d7d9de;
+}
+
+.review-card-body > img {
+  max-width: 100%;
+  padding-bottom: 30px;
+  max-width: 100%;
+}
+
+.review-card-tags {
+  display: flex;
+  background: white;
+  flex: 1;
+}
+
+.review-card-tags span > p {
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+
+
+
+.review-card-tags > span {
+  margin: 0px 20px;
+  cursor: pointer;
+}
+
+.single-category {
+  background: red;
+}
+
+.single-category:hover {
+  transition: 0.8;
+  background: rgb(240, 98, 98);
+}
+
+.single-designer {
+  background: #89d6c2;
+}
+
+.single-designer:hover{
+  background: #b1d7cd;
+}
+
+.review-card-footer {
+  display: flex;
+  color: #fff;
+  background: white;
+  border: 2px solid #d7d9de;
+  border-radius: 15px 0px 15px 15px;
+}
+.review-card-stats {
+  display: flex;
+  margin: 0px 10px;
+}
+
+.review-card-stats > span {
+  margin: 0px 10px;
+}
+
+.review-card-stats > span > p {
+  cursor: pointer;
+  border-radius: 7px;
+  background: #364c55;
+  padding: 10px 22px;
+}
+
+.review-card-stats > span > p:hover {
+  background: #7f878b;
+}
+@media screen and (max-width: 1223px) {
+  #single-review {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 921px) {
+  #single-review {
+    width: 100%;
+  }
+}
+
+
+=======
 #reviews-container{
   width: 50%;
   margin: auto;
@@ -53,7 +171,6 @@ body{
   text-decoration: none;
 }
 
-
 .review-footer{
   display: flex;
   flex-direction: row;
@@ -67,3 +184,4 @@ body{
   border-radius: 10px;
   margin: 4px 20px;
 }
+
