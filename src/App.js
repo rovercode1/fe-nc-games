@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import ArticleList from './components/ArticleList'
-import SingleReview from './components/SingleReview'
+import ArticleList from './Components/ArticleList'
+import SingleReview from './Components/SingleReview'
 import SingleReviewComments from './Components/SingleReviewComments';
 
 import { useState } from 'react';
