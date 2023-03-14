@@ -2,7 +2,6 @@
   text-align: center;
 }
 
-<<<<<<< HEAD
 body{
   background:#f8f8f8;
 }
@@ -18,13 +17,10 @@ body{
   color: white;
 }
 
-=======
->>>>>>> 0b6070d0c077d759d42fee7c77e6936d64c168a3
 .App-link {
   color: #61dafb;
 }
 
-<<<<<<< HEAD
 #reviews-container{
   width: 50%;
   margin: auto;
@@ -71,8 +67,6 @@ body{
   border-radius: 10px;
   margin: 4px 20px;
 }
-=======
->>>>>>> 0b6070d0c077d759d42fee7c77e6936d64c168a3
 body {
   background: #d7d9de;
 
@@ -203,11 +197,6 @@ body {
     width: 100%;
   }
 }
-
-
-<<<<<<< HEAD
-=======
-=======
 #reviews-container{
   width: 50%;
   margin: auto;
@@ -253,5 +242,3 @@ body {
   border-radius: 10px;
   margin: 4px 20px;
 }
-
->>>>>>> 0b6070d0c077d759d42fee7c77e6936d64c168a3
