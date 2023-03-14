@@ -2,24 +2,65 @@
   text-align: center;
 }
 
+#comments{
+  width: 50%;
+  margin: auto;
+}
+
+.comment-card{
+  border-radius: 5px;
+  background: #ffffff;
+  margin: 10px 0px;
+  border: 1px solid gainsboro;
+  border-radius: 10px 10px 0px 0px;
+}
+
 body{
   background:#f8f8f8;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.comment-header{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
+  border-bottom: 1px solid gainsboro;
+  background: #f0f0f0;
+  border-radius: 10px 10px 0px 0px;
+
 }
 
-.App-link {
-  color: #61dafb;
+.comment-header > *{
+  margin: 5px 0px;
+  text-align: left;
+  padding: 0px 14px;
+  text-align: left;
+  padding: 10px;
 }
+
+.comment-body{
+  font-size: 20px;
+  text-align: left;
+  padding: 0px 10px;
+}
+
+.comment-footer{
+  display: flex;
+  justify-content: space-around;
+  justify-content: flex-end;
+  border-top: 1px solid #d7d5d5;
+}
+
+.comment-footer span{
+  background: #e3e6e8;
+  padding: 6px 18px;
+  margin: 7px;
+  border-radius: 2px;
+}
+
+.comment-footer p{
+  margin: 0px;
+}
+
+
 
 #reviews-container{
   width: 50%;
