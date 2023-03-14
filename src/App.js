@@ -1,25 +1,31 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import ArticleList from './components/ArticleList'
+import SingleReview from './components/SingleReview'
 import SingleReviewComments from './Components/SingleReviewComments';
-import Test from './Components/Test';
+
 import { useState } from 'react';
 
 function App() {
-  const [isLoading, setisLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
+  const [review_id, setReviewId] = useState(1)
   return (
     <div className="App">
       <Routes>
       <Route
           path="/"
-          element={<Test />}
+          element={<ArticleList isLoading={isLoading} setIsLoading={setIsLoading}/>}
         />
         <Route
           path="/reviews/:review_id"
-          element={<SingleReviewComments isLoading={isLoading} setIsLoading={setisLoading}/>}
+          element={<SingleReview isLoading={isLoading} setIsLoading={setIsLoading}/>}
+        />
+        <Route
+          path="/reviews/:review_id/comments"
+          element={<SingleReviewComments isLoading={isLoading} setIsLoading={setIsLoading}/>}
         />
       </Routes>
     </div>
   );
 }
-
 export default App;
