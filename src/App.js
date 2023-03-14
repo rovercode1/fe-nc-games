@@ -8,7 +8,6 @@ import { useState } from 'react';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
-  const [review_id, setReviewId] = useState(1)
   return (
     <div className="App">
       <Routes>

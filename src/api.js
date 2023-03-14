@@ -26,7 +26,7 @@ export const fetchSingleReview = (review_id) => {
 
 export const fetchCommentsById = (review_id) => {
   return forumsData.get(`/reviews/${review_id}/comments`).then(({data})=>{
-    return data.data.comments
+    return data.comments
   }).catch((err)=>{
     console.error(err)
   })

@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../api";
 import ReactTimeAgo from "react-time-ago";
+import { useParams } from "react-router-dom";
 
-export default function SingleReview({ review_id, isLoading, setIsLoading }) {
+export default function SingleReview({ isLoading, setIsLoading }) {
+  const { review_id } = useParams();
+  const testId = 2
   const [singleReview, setSingleReview] = useState({});
-
   useEffect(() => {
     setIsLoading(true);
-    fetchSingleReview(review_id).then((review) => {
+    fetchSingleReview(testId).then((review) => {
       setSingleReview(review);
       setIsLoading(false);
     });
-  }, [setIsLoading, review_id]);
+  }, []);
 
   const displaySingleReview = (review) => {
+    const postedAt = new Date(review.created_at)
     return (
       <div className="single-review-card" key={review.review_id}>
         <div className="loading">
@@ -37,7 +40,7 @@ export default function SingleReview({ review_id, isLoading, setIsLoading }) {
           </div>
           <div className="review-card-stats">
             <span><p>{review.votes} Votes</p></span>
-            <span>{!isLoading ? (<p> Posted <ReactTimeAgo date={new Date(review.created_at)} locale="en-US" /> </p>) : (false)}</span>         
+            {/* <span>{!isLoading ? (<p> Posted <ReactTimeAgo date={postedAt} locale="en-US" /> </p>) : (false)}</span>          */}
           </div>
         </div>
       </div>

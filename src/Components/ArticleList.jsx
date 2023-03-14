@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { fetchAllReviews } from "../api"
-
 export default function ArticleList ({isLoading, setIsLoading}){
   const [reviews, setReviews] = useState([])
 
@@ -21,7 +21,9 @@ export default function ArticleList ({isLoading, setIsLoading}){
         </div>
         <div className="review-body">
           <h3>{review.title}</h3>
-          <img src={review.review_img_url} alt={review.title}></img>
+          <Link to={`/reviews/${review.review_id}`}>
+          <img src={review.review_img_url} alt={review.title} ></img>
+          </Link>
         </div>
         <div className="review-footer">
           <p>{review.votes} Votes</p>
