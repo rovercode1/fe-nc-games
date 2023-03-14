@@ -6,7 +6,7 @@ const [isLoading, setIsLoading] = useState(true)
   
   return (
     <div className="App">
-      <h1>Merge test</h1>
+      <h1>Merge tet</h1>
       <ArticleList isLoading={isLoading} setIsLoading={setIsLoading}/>
     </div>
   );
