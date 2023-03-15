@@ -4,16 +4,16 @@
 }
 
 #comments{
-  width: 50%;
+  width: 70%;
   margin: auto;
 }
 
 .comment-card{
   border-radius: 5px;
   background: #ffffff;
-  margin: 10px 0px;
   border: 1px solid gainsboro;
   border-radius: 10px 10px 0px 0px;
+  margin: 10px;
 }
 
 body{
@@ -152,13 +152,22 @@ body{
 
 }
 
+.review-card-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid gainsboro;
+  padding: 0px 10px;
+  border-radius: 5px;
+  margin: 10px;
+  background: #fff;
+}
+
 .review-card-tags{
   display: flex;
   justify-content: space-around;
   font-size: 20px;
   margin: 10px;
-  border-radius: 5px;
-  border: 1px solid #bfbfbf;
   padding: 10px;
 }
 
@@ -179,4 +188,34 @@ body{
 
 .review-card-tags > span > p, .review-card-tags > h2 {
   margin: 0px;
+}
+
+#no-comments{
+  font-size: 50px;
+}
+
+#post-comment{
+  width: 70%;
+  margin: auto;
+}
+
+#post-comment input{
+  padding: 5px;
+  width: 100%;
+  font-size: 36px;
+  border: 1px solid #bfbfbf;
+  border-radius: 5px;
+}
+
+#post-comment button, #single-review button {
+  padding: 10px 25px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid #bfbfbf;
+  background: aliceblue;
+}
+
+form{
+  display: flex;
+  margin: 10px;
 }

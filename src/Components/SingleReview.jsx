@@ -55,6 +55,8 @@ export default function SingleReview({ isLoading, setIsLoading, setReviews }) {
   return isLoading ? (
     <h1 className="loading">Loading...</h1>
   ) : (
+    <>
     <section id="single-review">{displaySingleReview(singleReview)}</section>
+    </>
   );
 }

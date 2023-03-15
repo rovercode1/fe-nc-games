@@ -15,7 +15,7 @@ export default function SingleReviewComments({ isLoading, setIsLoading }) {
   }, [review_id, setIsLoading]);
 
   const displayComments = (comment) => {
-    return (
+    return comments.length === 0?console.log('yep'):( 
       <article key={comment.comment_id} className="comment-card">
         <div className="comment-header">
           <p>{comment.author}</p>
@@ -43,6 +43,7 @@ export default function SingleReviewComments({ isLoading, setIsLoading }) {
     <h1>Loading...</h1>
   ) : (
     <section id="comments">
+      {comments.length < 1 ? <h1 id="no-comments">No Comments here!</h1>:console.log('no')}
       {comments.map((comment) => {
         return displayComments(comment);
       })}
