@@ -3,16 +3,15 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactTimeAgo from "react-time-ago";
 
-export default function SingleReviewComments({ isLoading, setIsLoading }) {
+export default function SingleReviewComments({ isLoading, setIsLoading, comments, setComments }) {
   const { review_id } = useParams();
-  const [comments, setComments] = useState([]);
   useEffect(() => {
     setIsLoading(true);
     fetchCommentsById(review_id).then((comments) => {
       setComments(comments);
       setIsLoading(false);
     });
-  }, [review_id, setIsLoading]);
+  }, [review_id, setIsLoading, setComments]);
 
   const displayComments = (comment) => {
     return comments.length === 0?console.log('yep'):( 
@@ -43,7 +42,7 @@ export default function SingleReviewComments({ isLoading, setIsLoading }) {
     <h1>Loading...</h1>
   ) : (
     <section id="comments">
-      {comments.length < 1 ? <h1 id="no-comments">No Comments here!</h1>:console.log('no')}
+      {comments.length < 1 ? <h1 id="no-comments">No Comments here!</h1>:false}
       {comments.map((comment) => {
         return displayComments(comment);
       })}

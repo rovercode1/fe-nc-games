@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../api";
 import ReactTimeAgo from "react-time-ago";
 import { useParams } from "react-router-dom";
-import { toggleVotes } from "../handle";
+import '../styles/SingleReview.css'
 
 export default function SingleReview({ isLoading, setIsLoading, setReviews }) {
   const { review_id } = useParams();
@@ -15,10 +15,6 @@ export default function SingleReview({ isLoading, setIsLoading, setReviews }) {
     });
   }, []);
 
-  const handleVotes = (e)=>{
-    console.log('clicked')
-    toggleVotes(e, setReviews)
-  } 
 
   const displaySingleReview = (review) => {
     const postedAt = review.created_at
@@ -45,7 +41,7 @@ export default function SingleReview({ isLoading, setIsLoading, setReviews }) {
             </span>
           </div>
           <div className="review-card-stats">
-          <button onClick={handleVotes}> {review.votes} Votes</button>
+          <button> {review.votes} Votes</button>
             {/* <span>{!isLoading  && postedAt === undefined ? (<p> Posted <ReactTimeAgo date={new Date(postedAt.toString())} locale="en-US" /> </p>) : (false)}</span>          */}
           </div>
         </div>

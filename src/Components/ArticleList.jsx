@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchAllReviews } from "../api";
+import '../styles/ArticleList.css'
 export default function ArticleList({ isLoading, setIsLoading }) {
   const [reviews, setReviews] = useState([]);
 
