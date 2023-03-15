@@ -5,6 +5,7 @@ import SingleReview from './Components/SingleReview'
 import SingleReviewComments from './Components/SingleReviewComments';
 
 import { useState } from 'react';
+import PostComment from './Components/PostComment';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -22,7 +23,7 @@ function App() {
         />
         <Route
           path="/reviews/:review_id/comments"
-          element={<SingleReviewComments isLoading={isLoading} setIsLoading={setIsLoading}/>}
+          element={<SingleReviewComments isLoading={isLoading} setIsLoading={setIsLoading}/> }
         />
       </Routes>
     </div>

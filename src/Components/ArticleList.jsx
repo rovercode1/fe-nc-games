@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { fetchAllReviews, postSingleVote, fetchSingleReview } from "../api";
-import { toggleVotes } from "../handle";
-
+import { fetchAllReviews } from "../api";
 export default function ArticleList({ isLoading, setIsLoading }) {
-  const [votedReview, setVotedReview] = useState(1);
   const [reviews, setReviews] = useState([]);
 
   //Initial get req vote state
@@ -15,26 +12,7 @@ export default function ArticleList({ isLoading, setIsLoading }) {
       setReviews(reviews);
       setIsLoading(false);
     });
-  }, [setIsLoading, setVotedReview]);
-
-
-  const handleVotes = (e) => {
-    const hasVoteClass = e.target.className;
-    const clickedReviewId = e.target.parentNode.parentNode.id;
-    setVotedReview(e.target.id)
-    const addVote = hasVoteClass === "voted" ? { inc_votes: 0} : { inc_votes: 0};
-
-    fetchSingleReview(clickedReviewId).then((fetchedReview)=>{
-      console.log(fetchedReview)
-    })
-
-    toggleVotes(e, setReviews);
-    setVotedReview(clickedReviewId)
-
-    postSingleVote(votedReview, addVote).then((res)=>{
-      console.log('database votes:',res)
-    })
-  };
+  }, [setIsLoading]);
 
   const displayReviews = (review) => {
     return (
@@ -59,7 +37,6 @@ export default function ArticleList({ isLoading, setIsLoading }) {
           <button
             className="default-vote"
             id={review.votes}
-            onClick={handleVotes}
           >
             {review.votes} Votes
           </button>
