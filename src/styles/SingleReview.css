@@ -1,0 +1,76 @@
+
+#single-review{
+  width: 70%;
+  margin: auto;
+}
+
+#single-review button {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 10px 25px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid #bfbfbf;
+  background: aliceblue;
+}
+
+.review-card-header{
+  padding: 10px;
+  background: #e7e7e7;
+  margin: 10px;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+
+.review-card-body{
+  border: 1px solid gainsboro;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.review-card-body > p {
+  font-size: 17px;
+  text-align: left;
+  line-height: 2;
+  padding: 10px;
+
+}
+
+.review-card-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid gainsboro;
+  padding: 0px 10px;
+  border-radius: 5px;
+  margin: 10px;
+  background: #fff;
+}
+
+.review-card-tags{
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.review-card-tags > span {
+  padding: 0px 27px;
+  background: #afbbdb;
+  margin: 4px;
+  align-items: center;
+  color: white;
+  text-align: center;
+  display: flex;
+  border-radius: 8px;
+}
+
+.review-card-tags > h2{
+  font-weight: 300;
+}
+
+.review-card-tags > span > p, .review-card-tags > h2 {
+  margin: 0px;
+}

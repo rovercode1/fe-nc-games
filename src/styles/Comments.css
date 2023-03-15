@@ -1,0 +1,102 @@
+#comments{
+  width: 70%;
+  margin: auto;
+  padding-top: 50px;
+  margin-top: 50px;
+  border-top: 3px solid #919191;
+}
+
+#posting {
+  background: #cde0f1;
+}
+
+#posted{
+  background: #a9f588;
+}
+
+.comment-card{
+  border-radius: 5px;
+  background: #ffffff;
+  border: 1px solid gainsboro;
+  border-radius: 10px 10px 0px 0px;
+  margin: 10px;
+}
+
+.comment-header{
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid gainsboro;
+  background: #f0f0f0;
+  border-radius: 10px 10px 0px 0px;
+
+}
+
+.comment-header > *{
+  margin: 5px 0px;
+  text-align: left;
+  padding: 0px 14px;
+  text-align: left;
+  padding: 10px;
+}
+
+.comment-body{
+  font-size: 20px;
+  text-align: left;
+  padding: 0px 10px;
+}
+
+.comment-footer{
+  display: flex;
+  justify-content: space-around;
+  justify-content: flex-end;
+  border-top: 1px solid #d7d5d5;
+}
+
+.comment-footer span{
+  background: #e3e6e8;
+  padding: 6px 18px;
+  margin: 7px;
+  border-radius: 2px;
+}
+
+.comment-footer p{
+  margin: 0px;
+  font-size: 17px;
+}
+
+#no-comments{
+  font-size: 50px;
+}
+
+#post-comment{
+  width: 70%;
+  margin: auto;
+}
+
+#post-comment input{
+  padding: 5px;
+  width: 100%;
+  font-size: 36px;
+  border: 1px solid #bfbfbf;
+  border-radius: 5px;
+}
+
+button {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 10px 25px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid #bfbfbf;
+  background: aliceblue;
+}
+
+form{
+  margin: 10px;
+}
+
+textarea{
+  resize: none;
+  width: 100%;
+  font-size: 30px;
+}
