@@ -31,8 +31,6 @@ function App() {
           element={<ReviewsByCategories isLoading={isLoading} setIsLoading={setIsLoading}/>}
         />
       </Routes>
-
-
     </div>
   );
 }

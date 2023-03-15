@@ -13,7 +13,6 @@ export default function ArticleList({ isLoading, setIsLoading }) {
     setCategories(categories);
   });
 
-
   useEffect(() => {
     setIsLoading(true);
     fetchAllReviews().then((reviews) => {
@@ -50,12 +49,14 @@ export default function ArticleList({ isLoading, setIsLoading }) {
     <h1>Loading...</h1>
   ) : (
     <section id="reviews-container">
-      <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+      <DropdownButton id="dropdown-basic-button" title="Review categories">
         {categories.map((category) => {
-          
           return (
-            <Dropdown.Item key={category.slug}as={Link} to={`/reviews?category=${category.slug.replaceAll('-','+')}`}>
-              {category.slug.replaceAll('-',' ')}
+            <Dropdown.Item
+              key={category.slug}
+              as={Link}
+              to={`/reviews?category=${category.slug.replaceAll("-", "+")}`}>
+              {category.slug.replaceAll("-", " ")}
             </Dropdown.Item>
           );
         })}

@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+#header{
+  margin-bottom: 70px;
+}
+
+#header > h1{
+  padding: 20px;
+    margin: 20px;
+    font-size: 40px;
+    text-align: left;
+    background: #efefef;
+}
+
 #comments{
   width: 50%;
   margin: auto;
@@ -106,4 +118,9 @@ body{
   padding: 10px 20px;
   border-radius: 10px;
   margin: 4px 20px;
+}
+
+#category-review{
+  width: 50%;
+  margin: auto;
 }

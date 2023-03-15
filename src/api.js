@@ -40,9 +40,15 @@ export const fetchCommentsById = (review_id) => {
   }
 
   export const fetchReviewsByCategories = (category_name)=>{
-    return forumsData.get(`/reviews?category=children%27s+games`).then(({data})=>{
-      return data
+    return forumsData.get(`/reviews?category=${category_name}`).then(({data})=>{
+      return data.reviews
     }).catch((err)=>{
       console.error(err)
+    })
+  }
+
+  export const fetchDog = ()=>{
+    return axios.get(('https://dog.ceo/api/breeds/image/random')).then(({data})=>{
+      return data.message
     })
   }
