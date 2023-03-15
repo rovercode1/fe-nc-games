@@ -30,5 +30,16 @@ export const fetchCommentsById = (review_id) => {
   }).catch((err)=>{
     console.error(err)
   })
-  }
+}
+
+
+export const postSingleVote = (review_id, newVotes) => {
+  return forumsData.patch('/reviews/' + review_id, newVotes).then(({data})=>{
+    console.log('this is votes->',data.review.votes)
+    return data.review.votes
+  })
+    .catch((err) => {
+      console.error(err);
+    });
+};
 

@@ -8,16 +8,17 @@ import { useState } from 'react';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
+  const [reviews, setReviews] = useState([]);
   return (
     <div className="App">
       <Routes>
       <Route
           path="/"
-          element={<ArticleList isLoading={isLoading} setIsLoading={setIsLoading}/>}
+          element={<ArticleList isLoading={isLoading} setIsLoading={setIsLoading} setReviews={setReviews}/>}
         />
         <Route
           path="/reviews/:review_id"
-          element={<SingleReview isLoading={isLoading} setIsLoading={setIsLoading}/>}
+          element={<SingleReview isLoading={isLoading} setIsLoading={setIsLoading} setReviews={setReviews}/>}
         />
         <Route
           path="/reviews/:review_id/comments"
