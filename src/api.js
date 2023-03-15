@@ -2,8 +2,6 @@ import axios from "axios";
 
 const forumsData = axios.create({
   baseURL: 'https://games-forum.onrender.com/api',
-  timeout: 1000,
-  headers: {'X-Custom-Header': 'foobar'}
 });
 
 export const fetchAllReviews = () => {
@@ -32,3 +30,19 @@ export const fetchCommentsById = (review_id) => {
   })
   }
 
+
+  export const fetchCategories = ()=>{
+    return forumsData.get(`/categories`).then(({data})=>{
+      return data.categories
+    }).catch((err)=>{
+      console.error(err)
+    })
+  }
+
+  export const fetchReviewsByCategories = (category_name)=>{
+    return forumsData.get(`/reviews?category=children%27s+games`).then(({data})=>{
+      return data
+    }).catch((err)=>{
+      console.error(err)
+    })
+  }

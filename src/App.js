@@ -3,13 +3,16 @@ import { Routes, Route } from 'react-router-dom';
 import ArticleList from './Components/ArticleList'
 import SingleReview from './Components/SingleReview'
 import SingleReviewComments from './Components/SingleReviewComments';
+import ReviewsByCategories from './Components/ReviewsByCategories';
 
 import { useState } from 'react';
+import Header from './Components/Header';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
   return (
     <div className="App">
+      <Header/>
       <Routes>
       <Route
           path="/"
@@ -23,7 +26,13 @@ function App() {
           path="/reviews/:review_id/comments"
           element={<SingleReviewComments isLoading={isLoading} setIsLoading={setIsLoading}/>}
         />
+        <Route
+          path="/reviews"
+          element={<ReviewsByCategories isLoading={isLoading} setIsLoading={setIsLoading}/>}
+        />
       </Routes>
+
+
     </div>
   );
 }
