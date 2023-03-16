@@ -12,7 +12,7 @@ export default function SingleReview({ isLoading, setIsLoading }) {
       setSingleReview(review);
       setIsLoading(false);
     });
-  }, []);
+  }, [review_id, setIsLoading]);
 
   const displaySingleReview = (review) => {
     const postedAt = review.created_at.toString()
