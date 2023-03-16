@@ -6,6 +6,10 @@
   border-top: 3px solid #919191;
 }
 
+#comment_count{
+  font-size: 30px;
+}
+
 #posting {
   background: #cde0f1;
 }
@@ -62,6 +66,15 @@
 .comment-footer p{
   margin: 0px;
   font-size: 17px;
+}
+
+.comment_count{
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.comment_count a{
+  text-decoration: none;
 }
 
 #no-comments{

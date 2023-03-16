@@ -43,6 +43,7 @@ export default function SingleReviewComments({ isLoading, setIsLoading, comments
   ) : (
     <section id="comments">
       {comments.length < 1 ? <h1 id="no-comments">No Comments here!</h1>:false}
+      <p id="comment_count">{comments.length} Comments</p>
       {comments.map((comment) => {
         return displayComments(comment);
       })}

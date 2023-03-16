@@ -16,6 +16,7 @@ export default function ArticleList({ isLoading, setIsLoading }) {
   }, [setIsLoading]);
 
   const displayReviews = (review) => {
+    console.log(review)
     return (
       <article
         id={review.review_id}
@@ -37,11 +38,12 @@ export default function ArticleList({ isLoading, setIsLoading }) {
         <div className="review-footer">
           <button
             className="default-vote"
-            id={review.votes}
-          >
+            id={review.votes}>
             {review.votes} Votes
           </button>
-          <p>Comments</p>
+          <Link className="comment_count" to={`/reviews/${review.review_id}`}>
+           <p> {review.comment_count} Comments</p>
+          </Link>
         </div>
       </article>
     );
