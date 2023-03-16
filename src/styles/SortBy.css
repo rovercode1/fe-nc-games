@@ -1,0 +1,15 @@
+#listing-form{
+  display: flex;
+  margin: auto;
+  width: 60%;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #e7e7e7;
+  padding: 13px;
+  border-radius: 5px;
+}
+
+.input-box{
+  display: flex;
+  flex-direction: column;
+}

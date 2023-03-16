@@ -1,11 +1,9 @@
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
 import { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { fetchCategories } from "../api";
+import { fetchCategories, fetchReviewBySort } from "../api";
 import {capitalizeFirstLetter} from '../utils'
+import '../styles/SortBy.css'
 
-export default function SortBy() {
+export default function FilterBar({setSearchParams, setReviews}) {
   const [categories, setCategory] = useState([]);
   const [sortBy, setSortBy] = useState([
     "date",
@@ -17,9 +15,9 @@ export default function SortBy() {
     "votes",
   ]);
   const [requestedSort, setRequestedSort] = useState({
-    category_name: "All reviews",
-    sort_by: "Date",
-    order: "DESC",
+    category: "",
+    sort_by: "",
+    order: "",
   });
 
   useEffect(() => {
@@ -27,10 +25,28 @@ export default function SortBy() {
       setCategory(categories);
     });
   }, []);
-
+  
   const handleSubmit = (e) => {
-    // e.preventDefault();
-    console.log(requestedSort);
+    e.preventDefault();
+    if(requestedSort.category === ''){
+      delete requestedSort.category
+    }
+    if(requestedSort.sort_by === 'date'){
+      requestedSort.sort_by = 'created_at'
+    }
+    if(requestedSort.sort_by === ''){
+      delete requestedSort.sort_by
+    }
+    if(requestedSort.order === ''){
+      delete requestedSort.order
+    }
+
+    setSearchParams(requestedSort);
+    const query = window.location.href.split('/')[3]
+
+    fetchReviewBySort(query).then((reviews)=>{
+      setReviews(reviews)
+    })
   };
 
   const handleChange = (e) => {
@@ -39,17 +55,15 @@ export default function SortBy() {
 
   return (
     <section id="sort-by">
+
+
       <form
         id="listing-form"
-        onSubmit={handleSubmit}
-        action={`/reviews?category=strategy`} method="GET"
-      >
+        onSubmit={handleSubmit}>
         <div className="input-box">
           <label>Category</label>
-          <select type="select" id="category_name" onChange={handleChange}>
-            <option key="all-reviews" value={"All reviews"}>
-              All Reviews
-            </option>
+          <select type="select" id="category" onChange={handleChange}>
+            <option key="" value={""}></option>
             {categories.map((category) => {
               return (
                 <option key={category.slug} value={category.slug}>
@@ -62,6 +76,7 @@ export default function SortBy() {
         <div className="input-box">
           <label>Sort by</label>
           <select type="select" id="sort_by" onChange={handleChange}>
+          <option key="" value={""}></option>
             {sortBy.map((sort) => {
               return (
                 <option key={sort} value={sort.toLowerCase()}>
@@ -74,11 +89,12 @@ export default function SortBy() {
         <div className="input-box">
           <label>Order</label>
           <select type="select" id="order" onChange={handleChange}>
-            <option value="ASC">ASC</option>
-            <option value="DESC">DESC</option>
+          <option key="" value={""}></option>
+            <option value="ASC">asc</option>
+            <option value="DESC">desc</option>
           </select>
         </div>
-        <button type="submit">Create Listing</button>
+          <button type="submit">Filter reviews</button>
       </form>
     </section>
   );

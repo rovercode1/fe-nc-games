@@ -39,3 +39,11 @@ export const fetchCommentsById = (review_id) => {
       console.error(err)
     })
   }
+  export const fetchReviewBySort = (query)=>{
+
+    return forumsData.get(`/reviews${query}`).then(({data})=>{
+      return data.reviews
+    }).catch((err)=>{
+      console.error(err)
+    })
+  }
