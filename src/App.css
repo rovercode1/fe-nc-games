@@ -15,11 +15,6 @@
     background: #efefef;
 }
 
-#comments{
-  width: 50%;
-  margin: auto;
-}
-
 .comment-card{
   border-radius: 5px;
   background: #ffffff;
@@ -28,9 +23,6 @@
   border-radius: 10px 10px 0px 0px;
 }
 
-body{
-  background:#f8f8f8;
-}
 
 .comment-header{
   display: flex;
@@ -124,4 +116,14 @@ body{
 #category-review{
   width: 50%;
   margin: auto;
+}
+
+.button{
+  cursor: pointer;
+  font-weight: 500;
+  padding: 5px 25px;
+  border-radius: 5px;
+  border: 1px solid #ebebeb;
+  background: aliceblue;
+  font-size: 16px;
 }

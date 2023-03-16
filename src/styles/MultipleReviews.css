@@ -1,9 +1,24 @@
-body{
-  background: #d4d4d7;
-}
 #reviews-container{
   width: 50%;
   margin: auto;
+}
+
+.review-body {
+  border: 1px solid gainsboro;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+}
+
+#reviews-container .button{
+  cursor: pointer;
+  font-weight: 500;
+  padding: 5px 25px;
+  border-radius: 5px;
+  border: 1px solid #ebebeb;
+  background: aliceblue;
+  font-size: 16px;
 }
 
 .review-card{
@@ -21,6 +36,12 @@ body{
   background: #fff;
   border-radius: 5px;
   border: 1px solid #aeaeae;
+}
+
+.review-card-button{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .review-header{
@@ -46,7 +67,6 @@ body{
   text-decoration: none;
 }
 
-
 .review-footer{
   display: flex;
   flex-direction: row;
@@ -66,7 +86,13 @@ body{
 }
 
 .default-voted{
-  background-color: white;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 5px 25px;
+  border-radius: 5px;
+  border: 1px solid #ebebeb;
+  background: aliceblue;
+  font-size: 12px;
 }
 
 .voted{

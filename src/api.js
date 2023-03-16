@@ -61,4 +61,10 @@ export const postCommentById = (review_id, username, body) => {
   }).catch((err)=>{
     console.error(err)
   })
+
+
+}
+
+export const deleteComment = (comment_id)=>{
+
 }

@@ -1,17 +1,35 @@
-
+#single-page{
+  width: 60%;
+  margin: auto;
+}
 #single-review{
-  width: 70%;
+  width: 60%;
   margin: auto;
 }
 
-#single-review button {
+#single-page button {
   cursor: pointer;
   font-weight: 700;
-  padding: 10px 25px;
-  font-size: 18px;
+  padding: 5px 25px;
   border-radius: 5px;
-  border: 1px solid #bfbfbf;
+  border: 1px solid #ebebeb;
   background: aliceblue;
+  font-size: 12px;
+}
+
+#single-page form{
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+#single-page form > * {
+  margin: 2px 0px;
+}
+
+#single-review button:hover{
+  background: rgb(247, 250, 252);
+  color:#545454;
 }
 
 .review-card-header{
@@ -20,6 +38,11 @@
   margin: 10px;
   border: 1px solid gainsboro;
   border-radius: 5px;
+}
+
+.review-card-header p{
+  margin: 0px;
+  text-align: left;
 }
 
 .review-card-body{
@@ -34,18 +57,31 @@
   text-align: left;
   line-height: 2;
   padding: 10px;
+}
 
+.review-card-body img{
+  width: 100%;
 }
 
 .review-card-footer{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid gainsboro;
-  padding: 0px 10px;
-  border-radius: 5px;
   margin: 10px;
   background: #fff;
+  padding: 10px;
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+}
+
+.review-card-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  background: #fff;
+  padding: 10px;
+  flex-direction: column;
 }
 
 .review-card-tags{
@@ -54,17 +90,23 @@
   font-size: 20px;
   margin: 10px;
   padding: 10px;
+  flex: 1;
 }
 
 .review-card-tags > span {
+  cursor: pointer;
   padding: 0px 27px;
   background: #afbbdb;
-  margin: 4px;
+  margin: 0px 20px;
   align-items: center;
   color: white;
   text-align: center;
   display: flex;
   border-radius: 8px;
+}
+
+.review-card-tags > span:hover {
+  background: #c2cff3;
 }
 
 .review-card-tags > h2{
@@ -73,4 +115,27 @@
 
 .review-card-tags > span > p, .review-card-tags > h2 {
   margin: 0px;
+  font-size: 14px;
+  padding: 0px 10px;
+}
+
+@media screen and (max-width: 1440px) {
+  #single-page{
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #single-page{
+    width: 100%;
+  }
+  #single-review{
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #single-review{
+    width: 95%;
+  }
 }
