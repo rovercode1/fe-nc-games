@@ -24,10 +24,13 @@ export default function ArticleList({ isLoading, setIsLoading }) {
 
   const displayReviews = (review) => {
     return (
-      <article className="review-card" key={review.review_id}>
+      <article
+        id={review.review_id}
+        className="review-card"
+        key={review.review_id}
+      >
         <div className="review-header">
           <p>
-            {" "}
             Posted by <span>{review.owner}</span>
           </p>
           <p>{review.created_at}</p>
@@ -39,8 +42,14 @@ export default function ArticleList({ isLoading, setIsLoading }) {
           </Link>
         </div>
         <div className="review-footer">
-          <p>{review.votes} Votes</p>
-          <p>Comments</p>
+          <button
+            className="default-vote"
+            id={review.votes}>
+            {review.votes} Votes
+          </button>
+          <Link className="comment_count" to={`/reviews/${review.review_id}`}>
+           <p> {review.comment_count} Comments</p>
+          </Link>
         </div>
       </article>
     );

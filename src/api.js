@@ -28,7 +28,7 @@ export const fetchCommentsById = (review_id) => {
   }).catch((err)=>{
     console.error(err)
   })
-  }
+}
 
 
   export const fetchCategories = ()=>{
@@ -52,3 +52,13 @@ export const fetchCommentsById = (review_id) => {
       return data.message
     })
   }
+export const postCommentById = (review_id, username, body) => {
+  return forumsData.post(`/reviews/${review_id}/comments`,{
+    username: username,
+    body: body,
+  }).then(({data})=>{
+    return data.comment
+  }).catch((err)=>{
+    console.error(err)
+  })
+}

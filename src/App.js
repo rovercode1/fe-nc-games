@@ -1,30 +1,39 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import Header from './Components/Header';
 import ArticleList from './Components/ArticleList'
-import SingleReview from './Components/SingleReview'
-import SingleReviewComments from './Components/SingleReviewComments';
 import ReviewsByCategories from './Components/ReviewsByCategories';
+import SinglePage from "./Components/SinglePage";
 
 import { useState } from 'react';
-import Header from './Components/Header';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
+  const [reviews, setReviews] = useState([]);
   return (
     <div className="App">
       <Header/>
       <Routes>
-      <Route
+        <Route
           path="/"
-          element={<ArticleList isLoading={isLoading} setIsLoading={setIsLoading}/>}
+          element={
+            <ArticleList
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+              setReviews={setReviews}
+              reviews={reviews}
+            />
+          }
         />
         <Route
           path="/reviews/:review_id"
-          element={<SingleReview isLoading={isLoading} setIsLoading={setIsLoading}/>}
-        />
-        <Route
-          path="/reviews/:review_id/comments"
-          element={<SingleReviewComments isLoading={isLoading} setIsLoading={setIsLoading}/>}
+          element={
+            <SinglePage
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+              setReviews={setReviews}
+            />
+          }
         />
         <Route
           path="/reviews"
@@ -35,4 +44,3 @@ function App() {
   );
 }
 export default App;
-
