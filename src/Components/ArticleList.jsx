@@ -28,7 +28,7 @@ export default function ArticleList ({isLoading, setIsLoading, reviews, setRevie
         </div>
         <div className="review-footer">
           <p>{review.votes} Votes</p>
-          <p>Comments</p>
+          <p> {review.comment_count} Comments</p>
         </div>
       </article>
     )

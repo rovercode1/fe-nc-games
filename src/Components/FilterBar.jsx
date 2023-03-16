@@ -13,6 +13,7 @@ export default function FilterBar({setSearchParams, setReviews}) {
     "review_body",
     "category",
     "votes",
+    "comment_count"
   ]
   const [requestedSort, setRequestedSort] = useState({
     category: "",
@@ -44,6 +45,7 @@ export default function FilterBar({setSearchParams, setReviews}) {
     setSearchParams(requestedSort);
     const query = window.location.href.split('/')[3]
 
+    console.log(query)
     fetchReviewBySort(query).then((reviews)=>{
       setReviews(reviews)
     })
