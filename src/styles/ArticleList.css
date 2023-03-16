@@ -1,4 +1,6 @@
-
+body{
+  background: #d4d4d7;
+}
 #reviews-container{
   width: 50%;
   margin: auto;
@@ -10,16 +12,29 @@
   margin: 10px 0px;
   background: rgb(255, 255, 255);
   border-radius: 10px 10px 0px 0px;
+  display: grid;
+  gap: 10px;
+  background: transparent;
+}
+
+.review-card > *{
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid #aeaeae;
 }
 
 .review-header{
   display: flex;
   justify-content: space-around;
-  background: #eeeeee;
-  border-radius: 10px 10px 0px 0px;
-  border-bottom: 2px solid gray;
+  background: #fff;
+  border-radius: 5px;
   text-align: center;
   align-items: center;
+}
+
+.review-header > p{
+  margin: 0px;
+  font-size: 20px;
 }
 
 .review-body img{
