@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchAllReviews } from "../api";
 import '../styles/ArticleList.css'
-export default function ArticleList({ isLoading, setIsLoading }) {
-  const [reviews, setReviews] = useState([]);
+export default function ArticleList({ isLoading, setIsLoading, setReviews, reviews }) {
 
   //Initial get req vote state
   
@@ -13,10 +12,9 @@ export default function ArticleList({ isLoading, setIsLoading }) {
       setReviews(reviews);
       setIsLoading(false);
     });
-  }, [setIsLoading]);
+  }, [setIsLoading, setReviews]);
 
   const displayReviews = (review) => {
-    console.log(review)
     return (
       <article
         id={review.review_id}

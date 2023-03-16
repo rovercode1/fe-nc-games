@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../api";
-import ReactTimeAgo from "react-time-ago";
+// import ReactTimeAgo from "react-time-ago";
 import { useParams } from "react-router-dom";
 import '../styles/SingleReview.css'
 
@@ -13,11 +13,10 @@ export default function SingleReview({ isLoading, setIsLoading, setReviews }) {
       setSingleReview(review);
       setIsLoading(false);
     });
-  }, []);
+  }, [review_id, setIsLoading]);
 
 
   const displaySingleReview = (review) => {
-    const postedAt = review.created_at
     return (
       <div className="single-review-card" key={review.review_id}>
         <div className="loading">

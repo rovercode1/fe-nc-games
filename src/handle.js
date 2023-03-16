@@ -1,10 +1,12 @@
 export const optimisticPostedComment= (postInput, postButton, setPostedComment)=>{
   postInput.disabled = true
+  postButton.disabled = true
   postButton.innerText = 'Posting...'
   postButton.id = 'posting'
 
   setTimeout(() => {
     postInput.disabled = false
+
     postButton.innerText = 'Posted!'
     postButton.id = 'posted'
     setPostedComment('')
@@ -12,6 +14,7 @@ export const optimisticPostedComment= (postInput, postButton, setPostedComment)=
 
   setTimeout(() => {
     postButton.innerText = 'Submit'
+    postButton.disabled = false
     postButton.id = ''
   }, 5000);
 }

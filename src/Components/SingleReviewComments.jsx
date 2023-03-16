@@ -1,5 +1,5 @@
 import { fetchCommentsById } from "../api";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ReactTimeAgo from "react-time-ago";
 
@@ -14,7 +14,7 @@ export default function SingleReviewComments({ isLoading, setIsLoading, comments
   }, [review_id, setIsLoading, setComments]);
 
   const displayComments = (comment) => {
-    return comments.length === 0?console.log('yep'):( 
+    return comments.length === 0?<h1>No comments here!</h1>:( 
       <article key={comment.comment_id} className="comment-card">
         <div className="comment-header">
           <p>{comment.author}</p>

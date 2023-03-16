@@ -16,6 +16,7 @@ function App() {
               isLoading={isLoading}
               setIsLoading={setIsLoading}
               setReviews={setReviews}
+              reviews={reviews}
             />
           }
         />

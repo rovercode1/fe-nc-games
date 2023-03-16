@@ -1,12 +1,13 @@
 import { useState } from "react"
-import { postCommentById, fetchUsers } from "../api"
+import { postCommentById } from "../api"
 import { useParams } from "react-router-dom";
 import { optimisticPostedComment } from "../handle";
-export default function PostComment({ comments, setComments}){
+
+export default function PostComment({setComments}){
   const { review_id } = useParams();
   const [postedComment, setPostedComment] = useState('')
-  const [currentUser, setCurrentUser] = useState('grumpy19')
   const [postedErr, setPostErr] = useState(false)
+  const currentUser = 'grumpy19'
 
   const handleSubmit = (e)=>{
     e.preventDefault();
