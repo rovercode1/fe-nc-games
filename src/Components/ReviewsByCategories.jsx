@@ -3,22 +3,24 @@ import { fetchReviewsByCategories, fetchDog } from "../api";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import axios from "axios";
-
 export default function ReviewsByCategories(){
+  const [isLoading, setIsLoading] = useState(false)
+  const [categoryReviews, setCategoryReviews] = useState([])
+  const [dog, setDog] = useState('')
+
   const search = useLocation().search;
   const category = new URLSearchParams(search).get('category');
-  const [categoryReviews, setCategoryReviews] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [dog, setDog] = useState('')
   let category_name = category.replaceAll("'", '%27')
+  const queryCategory = category_name.replaceAll(' ', '-')
+
 
   useEffect(() => {
     setIsLoading(true)
     fetchDog().then((dog)=>{
       setDog(dog)
     })
-    fetchReviewsByCategories(category_name).then((reviews)=>{
+
+    fetchReviewsByCategories(queryCategory).then((reviews)=>{
       setCategoryReviews(reviews)
       setIsLoading(false)
     }) 
@@ -35,7 +37,9 @@ export default function ReviewsByCategories(){
   const displayReview = ()=>{
     return categoryReviews.length < 1 ? (noReviews() ):( 
       <section id='category-review'>
+
         <h1>{category_name.replaceAll('+',' ')} reviews</h1>
+
         {categoryReviews.map((review)=>{
        return <article className="review-card" key={review.review_id}>
         <div className="review-header">
