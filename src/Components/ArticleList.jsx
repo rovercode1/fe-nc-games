@@ -2,8 +2,6 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { fetchAllReviews } from "../api"
 export default function ArticleList ({isLoading, setIsLoading, reviews, setReviews}){
-
-
   useEffect(()=>{
     setIsLoading(true)
     fetchAllReviews().then((reviews)=>{

@@ -20,8 +20,7 @@ export default function SingleReviewComments({ isLoading, setIsLoading }) {
         <div className="comment-header">
           <p>{comment.author}</p>
           {!isLoading ? (
-            <p>
-              Posted  <ReactTimeAgo
+            <p> Posted  <ReactTimeAgo
                 date={new Date(comment.created_at)}
                 locale="en-US"
               />

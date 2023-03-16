@@ -15,7 +15,6 @@ export default function SingleReview({ isLoading, setIsLoading }) {
   }, []);
 
   const displaySingleReview = (review) => {
-    // const postedAt = review.created_at.toString()
     return (
       <div className="single-review-card" key={review.review_id}>
         <div className="loading">
@@ -39,7 +38,6 @@ export default function SingleReview({ isLoading, setIsLoading }) {
           </div>
           <div className="review-card-stats">
             <span><p>{review.votes} Votes</p></span>
-            {/* <span>{!isLoading ? (<p> Posted <ReactTimeAgo date={new Date(postedAt)} locale="en-US" /> </p>) : (false)}</span>          */}
           </div>
         </div>
       </div>
