@@ -5,7 +5,7 @@ import '../styles/SortBy.css'
 
 export default function FilterBar({setSearchParams, setReviews}) {
   const [categories, setCategory] = useState([]);
-  const [sortBy, setSortBy] = useState([
+  const sortBy =[
     "date",
     "title",
     "designer",
@@ -13,7 +13,7 @@ export default function FilterBar({setSearchParams, setReviews}) {
     "review_body",
     "category",
     "votes",
-  ]);
+  ]
   const [requestedSort, setRequestedSort] = useState({
     category: "",
     sort_by: "",
@@ -55,8 +55,6 @@ export default function FilterBar({setSearchParams, setReviews}) {
 
   return (
     <section id="sort-by">
-
-
       <form
         id="listing-form"
         onSubmit={handleSubmit}>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../api";
-import ReactTimeAgo from "react-time-ago";
 import { useParams } from "react-router-dom";
 
 export default function SingleReview({ isLoading, setIsLoading }) {
@@ -12,7 +11,7 @@ export default function SingleReview({ isLoading, setIsLoading }) {
       setSingleReview(review);
       setIsLoading(false);
     });
-  }, []);
+  }, [review_id, setIsLoading]);
 
   const displaySingleReview = (review) => {
     return (
