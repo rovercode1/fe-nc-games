@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../api";
 import ReactTimeAgo from "react-time-ago";
 import { useParams } from "react-router-dom";
+import '../styles/SingleReview.css'
 
 export default function SingleReview({ isLoading, setIsLoading }) {
   const { review_id } = useParams();

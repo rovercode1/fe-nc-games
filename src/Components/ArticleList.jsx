@@ -4,6 +4,7 @@ import { fetchCategories, fetchAllReviews } from "../api";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import "bootstrap/dist/css/bootstrap.min.css";
+import '../styles/ArticleList.css'
 
 export default function ArticleList({ isLoading, setIsLoading }) {
   const [reviews, setReviews] = useState([]);
