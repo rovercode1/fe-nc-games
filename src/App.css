@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+#sort-by{
+  padding: 20px;
+  font-size: 20px;
+}
+
 #comments{
   width: 50%;
   margin: auto;

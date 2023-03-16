@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { fetchAllReviews } from "../api"
+import SortBy from "./SortBar"
 export default function ArticleList ({isLoading, setIsLoading}){
   const [reviews, setReviews] = useState([])
 
@@ -34,10 +35,14 @@ export default function ArticleList ({isLoading, setIsLoading}){
   }
 
   return isLoading?<h1>Loading...</h1>:(
+    <>
+    <SortBy/>
     <section id='reviews-container'>
       {reviews.map((review)=>{
         return displayReviews(review)
       })}
     </section>
+    
+    </>
   )
 }

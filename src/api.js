@@ -32,3 +32,10 @@ export const fetchCommentsById = (review_id) => {
   })
   }
 
+  export const fetchCategories = ()=>{
+    return forumsData.get(`/categories`).then(({data})=>{
+      return data.categories
+    }).catch((err)=>{
+      console.error(err)
+    })
+  }
