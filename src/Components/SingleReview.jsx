@@ -15,7 +15,6 @@ export default function SingleReview({ isLoading, setIsLoading, setReviews }) {
     });
   }, [review_id, setIsLoading]);
 
-
   const displaySingleReview = (review) => {
     return (
       <div className="single-review-card" key={review.review_id}>
