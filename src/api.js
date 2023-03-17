@@ -61,10 +61,14 @@ export const postCommentById = (review_id, username, body) => {
   }).catch((err)=>{
     console.error(err)
   })
-
-
 }
 
 export const deleteComment = (comment_id)=>{
-
+  return forumsData.delete(`/comments/${comment_id}`)
+  .then(({data})=>{
+    console.log('deleted!')
+    // return data.comment
+  }).catch((err)=>{
+    console.error(err)
+  })
 }

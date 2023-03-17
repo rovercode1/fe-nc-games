@@ -4,8 +4,6 @@ import Header from './Components/Header';
 import ArticleList from './Components/ArticleList'
 import ReviewsByCategories from './Components/ReviewsByCategories';
 import SinglePage from "./Components/SinglePage";
-import CategoryMenu from './Components/CategoryMenu';
-
 import { useState } from 'react';
 
 function App() {
