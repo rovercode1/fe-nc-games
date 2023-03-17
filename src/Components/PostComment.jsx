@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { postCommentById } from "../api"
 import { useParams } from "react-router-dom";
-import { optimisticPostedComment } from "../handle";
+import { optimisticPostedComment } from "../utils/handle";
 
 export default function PostComment({setComments}){
   const { review_id } = useParams();

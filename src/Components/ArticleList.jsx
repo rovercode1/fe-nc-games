@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchAllReviews } from "../api";
 import CategoryMenu from "./CategoryMenu";
-import { displayReviews } from "../utils";
+import { displayReviews } from "../utils/utils";
 import '../styles/MultipleReviews.css'
 
 export default function ArticleList({ isLoading, setIsLoading }) {

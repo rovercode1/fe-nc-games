@@ -2,7 +2,7 @@ import '../styles/MultipleReviews.css'
 import { useLocation } from "react-router-dom";
 import { fetchReviewsByCategories, fetchDog } from "../api";
 import { useState, useEffect } from "react";
-import { displayReviews, noReviews } from '../utils';
+import { displayReviews, noReviews } from '../utils/utils';
 import CategoryMenu from "./CategoryMenu";
 
 export default function ReviewsByCategories() {
@@ -26,7 +26,7 @@ export default function ReviewsByCategories() {
     });
   }, [setCategoryReviews, queryCategory]);
 
-  const displayReview = () => {
+  const displayCategoryReviews = () => {
     return categoryReviews.length < 1 ? (
       noReviews(dog, category_name)
     ) : (
@@ -41,5 +41,5 @@ export default function ReviewsByCategories() {
       </>
     );
   };
-  return isLoading ? <h1>Loading...</h1> : displayReview();
+  return isLoading ? <h1>Loading...</h1> : displayCategoryReviews();
 }

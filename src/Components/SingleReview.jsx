@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../api";
-import { displaySingleReview } from "../utils";
+import { displaySingleReview } from "../utils/utils";
 import { useParams } from "react-router-dom";
 import '../styles/SingleReview.css'
 
