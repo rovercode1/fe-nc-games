@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
-import { fetchReviewsByCategories, fetchDog } from "../api";
+import { fetchReviewsByCategories } from "../api";
+import { fetchDog } from "../handle";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -22,7 +23,9 @@ export default function ReviewsByCategories() {
     fetchReviewsByCategories(queryCategory).then((reviews) => {
       setCategoryReviews(reviews);
       setIsLoading(false);
-    });
+    }).catch((err)=>{
+      console.log('SOMETHING WENT WRONG!')
+    })
   }, [setCategoryReviews, queryCategory]);
 
   const noReviews = () => {

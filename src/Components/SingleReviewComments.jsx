@@ -1,52 +1,57 @@
 import { fetchCommentsById } from "../api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactTimeAgo from "react-time-ago";
 
-export default function SingleReviewComments({ isLoading, setIsLoading, comments, setComments }) {
+export default function SingleReviewComments({ isLoading, setIsLoading, comments, setComments}) {
   const { review_id } = useParams();
+  const [commentErr, setCommentErr] = useState(null)
   useEffect(() => {
     setIsLoading(true);
     fetchCommentsById(review_id).then((comments) => {
-      setComments(comments);
+        setComments(comments);
       setIsLoading(false);
-    });
+    }).catch((err)=>{
+      setIsLoading(false)
+      setCommentErr(true)
+    })
   }, [review_id, setIsLoading, setComments]);
 
-  const displayComments = (comment) => {
+  const displayComments = (comments) => {
     return comments.length === 0?<h1>No comments here!</h1>:( 
-      <article key={comment.comment_id} className="comment-card">
-        <div className="comment-header">
-          <p>{comment.author}</p>
-          {!isLoading ? (
-            <p>
-              Posted  <ReactTimeAgo
-                date={new Date(comment.created_at)}
-                locale="en-US"
-              />
-            </p>
-          ) : (
-            false
-          )}
-        </div>
-        <p className="comment-body">{comment.body}</p>
-        <div className="comment-footer">
-          <span>
-            <p>{comment.votes} Votes</p>
-          </span>
-        </div>
-      </article>
-    );
-  };
-  return isLoading ? (
-    <h1>Loading...</h1>
-  ) : (
-    <section id="comments">
-      {comments.length < 1 ? <h1 id="no-comments">No Comments here!</h1>:false}
+      <>
       <p id="comment_count">{comments.length} Comments</p>
       {comments.map((comment) => {
-        return displayComments(comment);
+      return  <article key={comment.comment_id} className="comment-card">
+          <div className="comment-header">
+            <p>{comment.author}</p>
+            {!isLoading ? (
+              <p>
+                Posted  <ReactTimeAgo
+                  date={new Date(comment.created_at)}
+                  locale="en-US"
+                />
+              </p>
+            ) : (
+              false
+            )}
+          </div>
+          <p className="comment-body">{comment.body}</p>
+          <div className="comment-footer">
+            <span>
+              <p>{comment.votes} Votes</p>
+            </span>
+          </div>
+        </article>
+
       })}
-    </section>
-  );
+      </>
+    );
+  };
+
+  return isLoading ||commentErr ?null:(
+    <>
+      <section id="comments"> {displayComments(comments)} </section>
+    </>
+  )
 }

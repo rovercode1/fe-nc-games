@@ -17,16 +17,11 @@ export const fetchSingleReview = (review_id) => {
   return forumsData.get('/reviews/' + review_id).then(({data})=>{
     return data.review
   })
-    .catch((err) => {
-      console.error(err);
-    });
 };
 
 export const fetchCommentsById = (review_id) => {
   return forumsData.get(`/reviews/${review_id}/comments`).then(({data})=>{
     return data.comments
-  }).catch((err)=>{
-    console.error(err)
   })
 }
 
@@ -47,11 +42,6 @@ export const fetchCommentsById = (review_id) => {
     })
   }
 
-  export const fetchDog = ()=>{
-    return axios.get(('https://dog.ceo/api/breeds/image/random')).then(({data})=>{
-      return data.message
-    })
-  }
 export const postCommentById = (review_id, username, body) => {
   return forumsData.post(`/reviews/${review_id}/comments`,{
     username: username,

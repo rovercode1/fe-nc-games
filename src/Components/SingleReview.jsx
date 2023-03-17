@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../api";
-// import ReactTimeAgo from "react-time-ago";
 import { useParams } from "react-router-dom";
 import '../styles/SingleReview.css'
 
-export default function SingleReview({ isLoading, setIsLoading, setReviews }) {
+export default function SingleReview({ isLoading, setIsLoading, err, setError }) {
   const { review_id } = useParams();
-  const [singleReview, setSingleReview] = useState({});
+  const [singleReview, setSingleReview] = useState(null);
+
   useEffect(() => {
     setIsLoading(true);
     fetchSingleReview(review_id).then((review) => {
-      setSingleReview(review);
+        setSingleReview(review);
       setIsLoading(false);
-    });
-  }, [review_id, setIsLoading]);
+    }).catch(({response})=>{
+      setIsLoading(false);
+      setError(response.data.msg)
+    })
+  }, [review_id, setIsLoading, setError]);
 
   const displaySingleReview = (review) => {
     return (
@@ -46,11 +49,9 @@ export default function SingleReview({ isLoading, setIsLoading, setReviews }) {
       </div>
     );
   };
-  return isLoading ? (
-    <h1 className="loading">Loading...</h1>
-  ) : (
+  return  (
     <>
-    <section id="single-review">{displaySingleReview(singleReview)}</section>
+    {singleReview ? <section id="single-review">{displaySingleReview(singleReview)}</section>:null}
     </>
   );
 }
