@@ -66,9 +66,7 @@ export const displayReviews = (review) => {
               {review.votes} Votes
             </button>
             <Link to={`/reviews/${review.review_id}`}>
-              <button className="button">
-                {review.comment_count} Comment
-              </button>
+              <button className="button">{review.comment_count} Comment</button>
             </Link>
           </div>
         </div>
@@ -89,31 +87,49 @@ export const noReviews = (dog, category_name) => {
   );
 };
 
-export const displayComments = (comment, comments, isLoading, setComments) => {
-    return comments.length === 0?<h1>No comments here!</h1>:( 
-      <article id={comment.comment_id}key={comment.comment_id} className="comment-card">
-        <div className="comment-header">
-          <p>{comment.author}</p>
-          {!isLoading ? (
-            <p>
-              Posted  <ReactTimeAgo
-                date={new Date(comment.created_at)}
-                locale="en-US"
-              />
-            </p>
-          ) : (
-            false
-          )}
-        </div>
-        <p className="comment-body">{comment.body}</p>
-        <div className="comment-footer">
-          <button>
-          {comment.votes} Votes
-          </button>
-          <button id={comment.comment_id} className="button" onClick={(e)=>optimisticDeletedComment(e, setComments)}>
-            Delete
-          </button>
-        </div>
-      </article>
+const isCurrentUser = (currentUser, comment, setComments) => {
+  if (currentUser === comment.author) {
+    return (
+      <button
+        id={comment.comment_id}
+        className="button"
+        onClick={(e) => optimisticDeletedComment(e, setComments)}
+      >
+        Delete
+      </button>
     );
-  };
+  }
+};
+export const displayComments = (
+  comment,
+  comments,
+  isLoading,
+  setComments,
+  currentUser
+) => {
+  return comments.length === 0 ? (
+    <h1>No comments here!</h1>
+  ) : (
+    <article
+      id={comment.comment_id}
+      key={comment.comment_id}
+      className="comment-card"
+    >
+      <div className="comment-header">
+        <p>{comment.author}</p>
+        {!isLoading ? (
+          <p>
+            <ReactTimeAgo date={new Date(comment.created_at)} locale="en-US" />
+          </p>
+        ) : (
+          false
+        )}
+      </div>
+      <p className="comment-body">{comment.body}</p>
+      <div className="comment-footer">
+        <button>{comment.votes} Votes</button>
+        {isCurrentUser(currentUser, comment, setComments)}
+      </div>
+    </article>
+  );
+};

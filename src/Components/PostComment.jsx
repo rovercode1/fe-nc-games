@@ -4,11 +4,10 @@ import { useParams } from "react-router-dom";
 import { successfulPostedComment, postingComment, unsuccessfulPostedComment } from "../utils/handle";
 import '../styles/Comments.css'
 
-export default function PostComment({setComments}){
+export default function PostComment({setComments, currentUser}){
   const { review_id } = useParams();
   const [postedComment, setPostedComment] = useState('')
   const [postedErr, setPostErr] = useState(false)
-  const currentUser = 'grumpy19'
 
   const handleSubmit = (e)=>{
     e.preventDefault();

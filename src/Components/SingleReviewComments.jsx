@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { displayComments } from "../utils/display";
 
 
-export default function SingleReviewComments({ isLoading, setIsLoading, comments, setComments }) {
+export default function SingleReviewComments({ isLoading, setIsLoading, comments, setComments, currentUser }) {
   const { review_id } = useParams();
   useEffect(() => {
     setIsLoading(true);
@@ -21,7 +21,7 @@ export default function SingleReviewComments({ isLoading, setIsLoading, comments
     <section id="comments">
       {comments.length < 1 ? <h1 id="no-comments">No Comments here!</h1>:false}
       {comments.map((comment) => {
-        return displayComments(comment, comments, isLoading, setComments);
+        return displayComments(comment, comments, isLoading, setComments, currentUser);
       })}
     </section>
   );
