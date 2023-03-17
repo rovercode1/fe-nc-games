@@ -1,7 +1,7 @@
 import { fetchCommentsById } from "../api";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { displayComments } from "../utils/utils";
+import { displayComments } from "../utils/display";
 
 
 export default function SingleReviewComments({ isLoading, setIsLoading, comments, setComments }) {

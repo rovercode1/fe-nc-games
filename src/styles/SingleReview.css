@@ -2,6 +2,19 @@
   width: 60%;
   margin: auto;
 }
+
+#single-page #posting{
+  background: #cde0f1;
+
+}
+#single-page #posted{
+  background: #a9f588;
+}
+
+#single-page #error{
+  background: #f58888;
+}
+
 #single-review{
   width: 60%;
   margin: auto;

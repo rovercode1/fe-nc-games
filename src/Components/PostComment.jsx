@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { postCommentById } from "../api"
 import { useParams } from "react-router-dom";
-import { optimisticPostedComment } from "../utils/handle";
+import { successfulPostedComment, postingComment, unsuccessfulPostedComment } from "../utils/handle";
+import '../styles/Comments.css'
 
 export default function PostComment({setComments}){
   const { review_id } = useParams();
@@ -13,12 +14,13 @@ export default function PostComment({setComments}){
     e.preventDefault();
     const postInput = e.target.childNodes[0]
     const postButton = e.target.childNodes[1]
-    
-    optimisticPostedComment(postInput, postButton, setPostedComment)
+    postingComment(postInput, postButton)
     postCommentById(review_id, currentUser, postedComment ).then((newComment)=>{
+      successfulPostedComment(postInput, postButton, setPostedComment)
       setPostErr(false)
       setComments((prevComments)=> [newComment,...prevComments])
     }).catch(()=>{
+      unsuccessfulPostedComment(postInput, postButton, setPostedComment)
       setPostErr(true)
     })
   }
