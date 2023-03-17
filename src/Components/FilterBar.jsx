@@ -27,8 +27,7 @@ export default function FilterBar({setSearchParams, setReviews}) {
     });
   }, []);
   
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if(requestedSort.category === ''){
       delete requestedSort.category
     }
@@ -41,11 +40,8 @@ export default function FilterBar({setSearchParams, setReviews}) {
     if(requestedSort.order === ''){
       delete requestedSort.order
     }
-
     setSearchParams(requestedSort);
     const query = window.location.href.split('/')[3]
-
-    console.log(query)
     fetchReviewBySort(query).then((reviews)=>{
       setReviews(reviews)
     })
@@ -53,6 +49,7 @@ export default function FilterBar({setSearchParams, setReviews}) {
 
   const handleChange = (e) => {
     setRequestedSort({ ...requestedSort, [e.target.id]: e.target.value });
+    handleSubmit()
   };
 
   return (
@@ -94,7 +91,6 @@ export default function FilterBar({setSearchParams, setReviews}) {
             <option value="DESC">desc</option>
           </select>
         </div>
-          <button type="submit">Filter reviews</button>
       </form>
     </section>
   );
