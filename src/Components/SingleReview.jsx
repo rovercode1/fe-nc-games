@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../api";
-import { displaySingleReview } from "../utils/utils";
+import { displaySingleReview } from "../utils/display";
 import { useParams } from "react-router-dom";
 import '../styles/SingleReview.css'
+
 
 export default function SingleReview({ isLoading, setIsLoading, comments }) {
   const { review_id } = useParams();

@@ -110,7 +110,7 @@ export const displayComments = (comment, comments, isLoading, setComments) => {
           <button>
           {comment.votes} Votes
           </button>
-          <button className="button" onClick={(e)=>optimisticDeletedComment(e, setComments)}>
+          <button id={comment.comment_id} className="button" onClick={(e)=>optimisticDeletedComment(e, setComments)}>
             Delete
           </button>
         </div>

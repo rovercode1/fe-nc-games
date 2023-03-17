@@ -47,11 +47,7 @@ export const fetchCommentsById = (review_id) => {
     })
   }
 
-  export const fetchDog = ()=>{
-    return axios.get(('https://dog.ceo/api/breeds/image/random')).then(({data})=>{
-      return data.message
-    })
-  }
+
 export const postCommentById = (review_id, username, body) => {
   return forumsData.post(`/reviews/${review_id}/comments`,{
     username: username,
@@ -66,7 +62,6 @@ export const postCommentById = (review_id, username, body) => {
 export const deleteComment = (comment_id)=>{
   return forumsData.delete(`/comments/${comment_id}`)
   .then(({data})=>{
-    console.log('deleted!')
     // return data.comment
   }).catch((err)=>{
     console.error(err)

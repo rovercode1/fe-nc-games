@@ -1,8 +1,9 @@
 import '../styles/MultipleReviews.css'
 import { useLocation } from "react-router-dom";
-import { fetchReviewsByCategories, fetchDog } from "../api";
+import { fetchReviewsByCategories } from "../api";
+import { fetchDog } from '../utils/handle';
 import { useState, useEffect } from "react";
-import { displayReviews, noReviews } from '../utils/utils';
+import { displayReviews, noReviews } from '../utils/display';
 import CategoryMenu from "./CategoryMenu";
 
 export default function ReviewsByCategories() {
