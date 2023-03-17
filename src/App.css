@@ -125,3 +125,7 @@ body{
   width: 50%;
   margin: auto;
 }
+
+#error-page{
+  font-weight: 300;
+}

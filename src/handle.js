@@ -1,3 +1,4 @@
+import axios from "axios"
 export const optimisticPostedComment= (postInput, postButton, setPostedComment)=>{
   postInput.disabled = true
   postButton.disabled = true
@@ -17,4 +18,15 @@ export const optimisticPostedComment= (postInput, postButton, setPostedComment)=
     postButton.disabled = false
     postButton.id = ''
   }, 5000);
+}
+
+export const reviewDoesntExist = ()=>{
+
+}
+
+export const fetchDog = ()=>{
+  return axios.get(('https://dog.ceo/api/breeds/image/random'))
+  .then(({data})=>{
+    return data.message
+  })
 }

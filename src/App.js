@@ -4,6 +4,7 @@ import Header from './Components/Header';
 import ArticleList from './Components/ArticleList'
 import ReviewsByCategories from './Components/ReviewsByCategories';
 import SinglePage from "./Components/SinglePage";
+import ErrorPage from './Components/ErrorPage';
 
 import { useState } from 'react';
 
@@ -14,6 +15,7 @@ function App() {
     <div className="App">
       <Header/>
       <Routes>
+      <Route path="*" element={<ErrorPage/>} />
         <Route
           path="/"
           element={
