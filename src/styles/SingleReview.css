@@ -74,16 +74,6 @@
   border-bottom: 1px solid gainsboro;
 }
 
-.review-card-bottom{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px;
-  background: #fff;
-  padding: 10px;
-  flex-direction: column;
-}
-
 .review-card-tags{
   display: flex;
   justify-content: space-around;

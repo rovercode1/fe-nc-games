@@ -3,6 +3,11 @@
   margin: auto;
 }
 
+#category-review{
+  width: 50%;
+  margin: auto;
+}
+
 .review-body {
   border: 1px solid gainsboro;
   margin: 10px;
@@ -67,6 +72,17 @@
   text-decoration: none;
 }
 
+.review-card-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  background: #fff;
+  padding: 10px;
+  flex-direction: column;
+  width: 100%;
+}
+
 .review-footer{
   display: flex;
   flex-direction: row;
@@ -97,4 +113,31 @@
 
 .voted{
   background-color: #c7c7c7;
+}
+
+@media screen and (max-width: 1280px) {
+  #reviews-container,  #category-review{
+    width: 70%;
+}
+}
+
+@media screen and (max-width: 875px) {
+  #reviews-container, #category-review {
+    width: 90%;
+}
+}
+
+@media screen and (max-width: 670px) {
+  #reviews-container, #category-review {
+    width: 100%;
+}
+
+.review-body{
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card-button button{
+  margin: 0px 15px;
+}
 }
