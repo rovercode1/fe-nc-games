@@ -16,7 +16,30 @@ export default function SingleReviewComments({ isLoading, setIsLoading, comments
     });
   }, [review_id, setIsLoading, setComments]);
 
-
+  const displayComments = (comment) => {
+    return comments.length === 0?<h1>No comments here!</h1>:( 
+      <article key={comment.comment_id} className="comment-card">
+        <div className="comment-header">
+          <p>{comment.author}</p>
+          {!isLoading ? (
+            <p> Posted  <ReactTimeAgo
+                date={new Date(comment.created_at)}
+                locale="en-US"
+              />
+            </p>
+          ) : (
+            false
+          )}
+        </div>
+        <p className="comment-body">{comment.body}</p>
+        <div className="comment-footer">
+          <span>
+            <p>{comment.votes} Votes</p>
+          </span>
+        </div>
+      </article>
+    );
+  };
   return isLoading ? (
     <h1>Loading...</h1>
   ) : (

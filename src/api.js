@@ -30,6 +30,14 @@ export const fetchCommentsById = (review_id) => {
   })
 }
 
+  export const fetchReviewsByCategories = (category_name)=>{
+    return forumsData.get(`/reviews?category=${category_name}`).then(({data})=>{
+      return data.reviews
+    }).catch((err)=>{
+      console.error(err)
+    })
+  }
+
 
   export const fetchCategories = ()=>{
     return forumsData.get(`/categories`).then(({data})=>{
@@ -38,9 +46,8 @@ export const fetchCommentsById = (review_id) => {
       console.error(err)
     })
   }
-
-  export const fetchReviewsByCategories = (category_name)=>{
-    return forumsData.get(`/reviews?category=${category_name}`).then(({data})=>{
+  export const fetchReviewBySort = (query)=>{
+    return forumsData.get(`/reviews${query}`).then(({data})=>{
       return data.reviews
     }).catch((err)=>{
       console.error(err)
