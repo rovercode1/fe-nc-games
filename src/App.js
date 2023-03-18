@@ -27,17 +27,14 @@ function App() {
             <ArticleList
               isLoading={isLoading}
               setIsLoading={setIsLoading}
-
               reviews={reviews}
               setReviews={setReviews}
-
             />
           }
         />
         <Route
           path="/reviews/:review_id"
           element={
-
             <SinglePage
               isLoading={isLoading}
               setIsLoading={setIsLoading}
