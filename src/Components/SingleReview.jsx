@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../api";
-import { displaySingleReview } from "../utils/display";
 import { useParams } from "react-router-dom";
 import '../styles/SingleReview.css'
-
 
 export default function SingleReview({ isLoading, setIsLoading, comments }) {
   const { review_id } = useParams();
@@ -16,36 +14,44 @@ export default function SingleReview({ isLoading, setIsLoading, comments }) {
     });
   }, [review_id, setIsLoading]);
 
-  const displaySingleReview = (review) => {
+  const displaySingleReview = (review, comments) => {
     return (
-      <div className="single-review-card" key={review.review_id}>
-        <div className="loading">
-        </div>
+      <article
+        id={review.review_id}
+        className="single-review-card"
+        key={review.review_id}
+      >
         <div className="review-card-header">
-          <p>Posted by <span>{review.owner}</span></p>  
+          <p>
+            Posted by <span>{review.owner}</span>
+          </p>
+          <p>{review.created_at}</p>
         </div>
         <div className="review-card-body">
           <h2>{review.title}</h2>
           <img src={review.review_img_url} alt={review.title}></img>
-          <p>{review.review_body}</p>          
-        </div>
-        <div className="review-card-footer">
+          <p>{review.review_body}</p>
           <div className="review-card-tags">
-            <h2>View more of: </h2>
             <span>
-              <p className="single-category"> {review.category}</p>{" "}
+              <p className="single-category"> {review.category}</p>
             </span>
             <span>
+              {" "}
               <p className="single-designer">{review.designer}</p>
             </span>
           </div>
+        </div>
+        <div className="review-card-footer">
           <div className="review-card-stats">
-
-          <button> {review.votes} Votes</button>
+            <button> {review.votes} Votes</button>
+            {/* <span>{!isLoading  && postedAt === undefined ? (<p> Posted <ReactTimeAgo date={new Date(postedAt.toString())} locale="en-US" /> </p>) : (false)}</span>          */}
+          </div>
+          <div className="review-card-stats">
+            <button> {comments.length} Comments</button>
             {/* <span>{!isLoading  && postedAt === undefined ? (<p> Posted <ReactTimeAgo date={new Date(postedAt.toString())} locale="en-US" /> </p>) : (false)}</span>          */}
           </div>
         </div>
-      </div>
+      </article>
     );
   };
   return isLoading ? (

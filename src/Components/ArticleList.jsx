@@ -5,10 +5,10 @@ import FilterBar from "./FilterBar";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import { fetchCategories, fetchAllReviews } from "../api";
-import { displayReviews } from "../utils/display";
 import '../styles/MultipleReviews.css'
-import "../styles/ArticleList.css";
+import "../styles/MultipleReviews.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 export default function ArticleList({
   isLoading,
   setIsLoading,
@@ -39,26 +39,27 @@ export default function ArticleList({
         className="review-card"
         key={review.review_id}
       >
-        <div className="review-header">
+        <div className="review-card-header">
           <p>
-            {" "}
             Posted by <span>{review.owner}</span>
           </p>
           <p>{review.created_at}</p>
         </div>
         <div className="review-body">
-          <h3>{review.title}</h3>
           <Link to={`/reviews/${review.review_id}`}>
             <img src={review.review_img_url} alt={review.title}></img>
           </Link>
-        </div>
-        <div className="review-footer">
-          <button className="default-vote" id={review.votes}>
-            {review.votes} Votes
-          </button>
-          <Link className="comment_count" to={`/reviews/${review.review_id}`}>
-            <p> {review.comment_count} Comments</p>
-          </Link>
+          <div className="review-card-bottom">
+            <h3>{review.title}</h3>
+            <div className="review-card-button">
+              <button className="button" id={review.votes}>
+                {review.votes} Votes
+              </button>
+              <Link to={`/reviews/${review.review_id}`}>
+                <button className="button">{review.comment_count} Comment</button>
+              </Link>
+            </div>
+          </div>
         </div>
       </article>
     );

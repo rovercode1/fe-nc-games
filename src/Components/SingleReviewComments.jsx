@@ -2,8 +2,7 @@ import { useEffect, useContext } from "react";
 import { UserContext } from "../contexts/User";
 import { fetchCommentsById } from "../api";
 import { useParams } from "react-router-dom";
-import { displayComments } from "../utils/display";
-
+import ReactTimeAgo from "react-time-ago";
 
 export default function SingleReviewComments({ isLoading, setIsLoading, comments, setComments }) {
   const { currentUser } = useContext(UserContext);
@@ -16,16 +15,39 @@ export default function SingleReviewComments({ isLoading, setIsLoading, comments
     });
   }, [review_id, setIsLoading, setComments]);
 
-  const displayComments = (comment) => {
-    return comments.length === 0?<h1>No comments here!</h1>:( 
-      <article key={comment.comment_id} className="comment-card">
+  const isCurrentUser = (currentUser, comment, setComments) => {
+    if (currentUser === comment.author) {
+      return (
+        <button
+          id={comment.comment_id}
+          className="button"
+        >
+          Delete
+        </button>
+      );
+    }
+  };
+
+   const displayComments = (
+    comment,
+    comments,
+    isLoading,
+    setComments,
+    currentUser
+  ) => {
+    return comments.length === 0 ? (
+      <h1>No comments here!</h1>
+    ) : (
+      <article
+        id={comment.comment_id}
+        key={comment.comment_id}
+        className="comment-card"
+      >
         <div className="comment-header">
           <p>{comment.author}</p>
           {!isLoading ? (
-            <p> Posted  <ReactTimeAgo
-                date={new Date(comment.created_at)}
-                locale="en-US"
-              />
+            <p>
+              <ReactTimeAgo date={new Date(comment.created_at)} locale="en-US" />
             </p>
           ) : (
             false
@@ -33,9 +55,8 @@ export default function SingleReviewComments({ isLoading, setIsLoading, comments
         </div>
         <p className="comment-body">{comment.body}</p>
         <div className="comment-footer">
-          <span>
-            <p>{comment.votes} Votes</p>
-          </span>
+          <button>{comment.votes} Votes</button>
+          {isCurrentUser(currentUser, comment, setComments)}
         </div>
       </article>
     );

@@ -3,8 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Header from './Components/Header';
 import SinglePage from "./Components/SinglePage";
 import ArticleList from "./Components/ArticleList";
-import SingleReview from "./Components/SingleReview";
-import SingleReviewComments from "./Components/SingleReviewComments";
 import ReviewsByCategories from './Components/ReviewsByCategories';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";

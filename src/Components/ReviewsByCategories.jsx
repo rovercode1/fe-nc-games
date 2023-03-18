@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { fetchReviewsByCategories } from "../api";
 import { fetchDog } from '../utils/handle';
 import { useState, useEffect } from "react";
-import { displayReviews, noReviews } from '../utils/display';
+import { displayReviews } from '../utils/display';
 import CategoryMenu from "./CategoryMenu";
 
 export default function ReviewsByCategories() {
@@ -14,6 +14,18 @@ export default function ReviewsByCategories() {
   const category = new URLSearchParams(search).get("category");
   let category_name = category.replaceAll("'", "%27");
   const queryCategory = category_name.replaceAll(" ", "-");
+
+  const noReviews = (dog, category_name) => {
+    return (
+      <>
+        <h1>
+          Oops! No '<strong>{category_name}</strong>' reviews found.
+        </h1>
+        <h3>Here, have a dog!</h3>
+        <img src={dog} alt="cute doggy" />
+      </>
+    );
+  };
 
   useEffect(() => {
     setIsLoading(true);
