@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchCategories, fetchReviewBySort } from "../api";
-import {capitalizeFirstLetter} from '../utils'
+import {capitalizeFirstLetter} from '../utils/utils'
 import '../styles/SortBy.css'
 
 export default function FilterBar({setSearchParams, setReviews}) {

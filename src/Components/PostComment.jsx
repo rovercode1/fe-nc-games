@@ -2,7 +2,7 @@ import { useState, useContext } from "react"
 import { useParams } from "react-router-dom";
 import { UserContext } from "../contexts/User";
 import { postCommentById } from "../api"
-import { successfulPostedComment, postingComment, unsuccessfulPostedComment } from "../utils/handle";
+import { successfulPostedComment, postingComment, unsuccessfulPostedComment } from "../utils/optimisticRendering";
 import '../styles/Comments.css'
 
 export default function PostComment({setComments}){

@@ -1,4 +1,3 @@
-import { deleteComment } from "../api"
 import axios from "axios"
 
 export const postingComment = (postInput, postButton)=>{
@@ -7,6 +6,7 @@ export const postingComment = (postInput, postButton)=>{
   postButton.innerText = 'Posting...'
   postButton.id = 'posting'
 }
+
 export const successfulPostedComment = (postInput, postButton, setPostedComment)=>{
     postInput.disabled = false
     postButton.innerText = 'Posted!'
@@ -33,7 +33,7 @@ setTimeout(() => {
 }, 3000);
 }
 
-export const optimisticDeletedComment = (e, setComments)=>{
+export const successfulDeletedComment = (e, setComments)=>{
   const clickedComment = e.target
   setComments((prevComments)=>{
     const updatedComments = prevComments.filter((comment)=>{
@@ -41,7 +41,6 @@ export const optimisticDeletedComment = (e, setComments)=>{
     })
     return [...updatedComments]
   })
-  deleteComment(+clickedComment.id)
 }
 
 export const fetchDog = ()=>{
