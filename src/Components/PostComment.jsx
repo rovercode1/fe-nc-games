@@ -1,10 +1,12 @@
-import { useState } from "react"
-import { postCommentById } from "../api"
+import { useState, useContext } from "react"
 import { useParams } from "react-router-dom";
+import { UserContext } from "../contexts/User";
+import { postCommentById } from "../api"
 import { successfulPostedComment, postingComment, unsuccessfulPostedComment } from "../utils/handle";
 import '../styles/Comments.css'
 
-export default function PostComment({setComments, currentUser}){
+export default function PostComment({setComments}){
+  const { currentUser } = useContext(UserContext);
   const { review_id } = useParams();
   const [postedComment, setPostedComment] = useState('')
   const [postedErr, setPostErr] = useState(false)

@@ -1,5 +1,6 @@
 import { deleteComment } from "../api"
 import axios from "axios"
+
 export const postingComment = (postInput, postButton)=>{
   postInput.disabled = true
   postButton.disabled = true
