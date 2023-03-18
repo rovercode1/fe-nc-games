@@ -30,15 +30,6 @@ export const fetchCommentsById = (review_id) => {
   })
 }
 
-
-  export const fetchCategories = ()=>{
-    return forumsData.get(`/categories`).then(({data})=>{
-      return data.categories
-    }).catch((err)=>{
-      console.error(err)
-    })
-  }
-
   export const fetchReviewsByCategories = (category_name)=>{
     return forumsData.get(`/reviews?category=${category_name}`).then(({data})=>{
       return data.reviews
@@ -56,7 +47,6 @@ export const fetchCommentsById = (review_id) => {
     })
   }
   export const fetchReviewBySort = (query)=>{
-
     return forumsData.get(`/reviews${query}`).then(({data})=>{
       return data.reviews
     }).catch((err)=>{
