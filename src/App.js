@@ -1,8 +1,13 @@
+
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import Header from './Components/Header';
+import SinglePage from "./Components/SinglePage";
 import ArticleList from "./Components/ArticleList";
 import SingleReview from "./Components/SingleReview";
 import SingleReviewComments from "./Components/SingleReviewComments";
+import ReviewsByCategories from './Components/ReviewsByCategories';
+
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
@@ -14,6 +19,7 @@ function App() {
   const [reviews, setReviews] = useState([]);
   return (
     <div className="App">
+      <Header/>
       <Routes>
         <Route
           path="/"
@@ -21,25 +27,27 @@ function App() {
             <ArticleList
               isLoading={isLoading}
               setIsLoading={setIsLoading}
+
               reviews={reviews}
               setReviews={setReviews}
+
             />
           }
         />
         <Route
           path="/reviews/:review_id"
           element={
-            <SingleReview isLoading={isLoading} setIsLoading={setIsLoading} />
+
+            <SinglePage
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+              setReviews={setReviews}
+            />
           }
         />
         <Route
-          path="/reviews/:review_id/comments"
-          element={
-            <SingleReviewComments
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
-            />
-          }
+          path="/reviews"
+          element={<ReviewsByCategories isLoading={isLoading} setIsLoading={setIsLoading}/>}
         />
       </Routes>
     </div>

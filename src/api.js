@@ -2,8 +2,6 @@ import axios from "axios";
 
 const forumsData = axios.create({
   baseURL: 'https://games-forum.onrender.com/api',
-  timeout: 1000,
-  headers: {'X-Custom-Header': 'foobar'}
 });
 
 export const fetchAllReviews = () => {
@@ -30,7 +28,25 @@ export const fetchCommentsById = (review_id) => {
   }).catch((err)=>{
     console.error(err)
   })
+}
+
+
+  export const fetchCategories = ()=>{
+    return forumsData.get(`/categories`).then(({data})=>{
+      return data.categories
+    }).catch((err)=>{
+      console.error(err)
+    })
   }
+
+  export const fetchReviewsByCategories = (category_name)=>{
+    return forumsData.get(`/reviews?category=${category_name}`).then(({data})=>{
+      return data.reviews
+    }).catch((err)=>{
+      console.error(err)
+    })
+  }
+
 
   export const fetchCategories = ()=>{
     return forumsData.get(`/categories`).then(({data})=>{
@@ -47,3 +63,20 @@ export const fetchCommentsById = (review_id) => {
       console.error(err)
     })
   }
+
+  export const fetchDog = ()=>{
+    return axios.get(('https://dog.ceo/api/breeds/image/random')).then(({data})=>{
+      return data.message
+    })
+  }
+export const postCommentById = (review_id, username, body) => {
+  return forumsData.post(`/reviews/${review_id}/comments`,{
+    username: username,
+    body: body,
+  }).then(({data})=>{
+    return data.comment
+  }).catch((err)=>{
+    console.error(err)
+  })
+}
+

@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../api";
-import { useParams } from "react-router-dom";
+// import ReactTimeAgo from "react-time-ago";
 
-export default function SingleReview({ isLoading, setIsLoading }) {
+import { useParams } from "react-router-dom";
+import '../styles/SingleReview.css'
+
+export default function SingleReview({ isLoading, setIsLoading, setReviews }) {
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState({});
   useEffect(() => {
@@ -28,6 +31,7 @@ export default function SingleReview({ isLoading, setIsLoading }) {
         </div>
         <div className="review-card-footer">
           <div className="review-card-tags">
+            <h2>View more of: </h2>
             <span>
               <p className="single-category"> {review.category}</p>{" "}
             </span>
@@ -36,7 +40,9 @@ export default function SingleReview({ isLoading, setIsLoading }) {
             </span>
           </div>
           <div className="review-card-stats">
-            <span><p>{review.votes} Votes</p></span>
+
+          <button> {review.votes} Votes</button>
+            {/* <span>{!isLoading  && postedAt === undefined ? (<p> Posted <ReactTimeAgo date={new Date(postedAt.toString())} locale="en-US" /> </p>) : (false)}</span>          */}
           </div>
         </div>
       </div>
@@ -45,6 +51,8 @@ export default function SingleReview({ isLoading, setIsLoading }) {
   return isLoading ? (
     <h1 className="loading">Loading...</h1>
   ) : (
+    <>
     <section id="single-review">{displaySingleReview(singleReview)}</section>
+    </>
   );
 }
