@@ -1,3 +1,5 @@
+import FilterBar from "./FilterBar";
+import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchCategories, fetchAllReviews } from "../api";
@@ -6,9 +8,18 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../styles/ArticleList.css'
 
-export default function ArticleList({ isLoading, setIsLoading }) {
-  const [reviews, setReviews] = useState([]);
+export default function ArticleList ({isLoading, setIsLoading, reviews, setReviews}){
+  let [searchParams, setSearchParams] = useSearchParams();
+    const [reviews, setReviews] = useState([]);
   const [categories, setCategories] = useState([]);
+  useEffect(()=>{
+    setIsLoading(true)
+    fetchAllReviews().then((reviews)=>{
+      setReviews(reviews)
+      setIsLoading(false)
+    })
+  },[setIsLoading, setReviews])
+
 
   fetchCategories().then((categories) => {
     setCategories(categories);
@@ -72,9 +83,16 @@ export default function ArticleList({ isLoading, setIsLoading }) {
         })}
       </DropdownButton>
 
-      {reviews.map((review) => {
-        return displayReviews(review);
+  return isLoading?<h1>Loading...</h1>:(
+    <>
+    <section id='reviews-container'>
+    <FilterBar searchParams={searchParams} setReviews={setReviews} setSearchParams={setSearchParams}/>
+      {reviews.map((review)=>{
+        return displayReviews(review)
       })}
     </section>
-  );
+    
+    </>
+  )
 }
+

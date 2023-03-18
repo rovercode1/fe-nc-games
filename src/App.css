@@ -3,6 +3,12 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+
+#sort-by{
+  padding: 20px;
+  font-size: 20px;
+  }
+
 #header{
   margin-bottom: 70px;
 }
@@ -121,7 +127,9 @@ body{
   margin: 4px 20px;
 }
 
+
 #category-review{
   width: 50%;
   margin: auto;
 }
+

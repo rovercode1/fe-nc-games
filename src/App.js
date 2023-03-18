@@ -1,11 +1,18 @@
-import './App.css';
-import { Routes, Route } from 'react-router-dom';
-import Header from './Components/Header';
-import ArticleList from './Components/ArticleList'
-import ReviewsByCategories from './Components/ReviewsByCategories';
-import SinglePage from "./Components/SinglePage";
 
-import { useState } from 'react';
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Header from './Components/Header';
+import SinglePage from "./Components/SinglePage";
+import ArticleList from "./Components/ArticleList";
+import SingleReview from "./Components/SingleReview";
+import SingleReviewComments from "./Components/SingleReviewComments";
+import ReviewsByCategories from './Components/ReviewsByCategories';
+
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
+
+// searchParams={searchParams} setReviews={setReviews} setSearchParams={setSearchParams}
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,14 +27,17 @@ function App() {
             <ArticleList
               isLoading={isLoading}
               setIsLoading={setIsLoading}
-              setReviews={setReviews}
+
               reviews={reviews}
+              setReviews={setReviews}
+
             />
           }
         />
         <Route
           path="/reviews/:review_id"
           element={
+
             <SinglePage
               isLoading={isLoading}
               setIsLoading={setIsLoading}
