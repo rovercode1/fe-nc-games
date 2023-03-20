@@ -3,13 +3,15 @@ import SingleReviewComments from "./SingleReviewComments"
 import PostComment from "./PostComment"
 import { useState } from "react"
 import '../styles/Comments.css'
-export default function SinglePage ({isLoading, setIsLoading, setReviews}){
+export default function SinglePage ({setReviews}){
   const [comments, setComments] = useState([]);
+  const [err, setErr] = useState(null);
+  const [isLoadingComments, setLoadingComments] = useState(false)
   return (
     <section id='single-page'>
-      <SingleReview  isLoading={isLoading} setIsLoading={setIsLoading} setReviews={setReviews} comments={comments}/>
-      <PostComment isLoading={isLoading} setIsLoading={setIsLoading} comments={comments} setComments={setComments}  />
-      <SingleReviewComments isLoading={isLoading} setIsLoading={setIsLoading} comments={comments} setComments={setComments}  />
+      <SingleReview   setReviews={setReviews} comments={comments} err={err} setErr={setErr}/>
+      <PostComment  comments={comments} setComments={setComments}  err={err} setErr={setErr} isLoadingComments={isLoadingComments} />
+      <SingleReviewComments  comments={comments} setComments={setComments}  err={err} setErr={setErr} isLoadingComments={isLoadingComments} setLoadingComments={setLoadingComments}/>
     </section>
   )
 }

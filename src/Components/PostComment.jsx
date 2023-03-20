@@ -4,8 +4,9 @@ import { UserContext } from "../contexts/User";
 import { postCommentById } from "../api"
 import { successfulPostedComment, postingComment, unsuccessfulPostedComment } from "../utils/optimisticRendering";
 import '../styles/Comments.css'
+import '../App.css'
 
-export default function PostComment({setComments}){
+export default function PostComment({setComments, err, setErr, isLoadingComments}){
   const { currentUser } = useContext(UserContext);
   const { review_id } = useParams();
   const [postedComment, setPostedComment] = useState('')
@@ -26,13 +27,22 @@ export default function PostComment({setComments}){
     })
   }
 
-  return (
-  <section id='post-comment'>
+  const loadingPostComment= ()=>{
+    return <div id="loading-post-comment">
+      Loading...
+    </div>
+    
+  }
+
+  const displayPostComment = ()=>{
+    return isLoadingComments? loadingPostComment():
+    <section id='post-comment'>
     <form action="" onSubmit={handleSubmit}>
       <textarea rows='4'  onChange={(event) => setPostedComment(event.target.value)} value={postedComment} required></textarea>
       <button type="submit">Submit</button>
       {postedErr?<p>Oops! Something went wrong</p>:false}
     </form>
   </section>
-  )
+  }
+  return err?null:displayPostComment()
 }
