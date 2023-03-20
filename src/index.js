@@ -1,6 +1,7 @@
 import "./index.css";
 import App from "./App";
-import { UserProvider } from "./contexts/User";
+import { UserProvider, } from "./contexts/User";
+import { LoadingProvider } from "./contexts/IsLoading";
 import TimeAgo from "javascript-time-ago";
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <UserProvider>
-      <App />
+      <LoadingProvider>
+      <App/>
+      </LoadingProvider>
     </UserProvider>
   </BrowserRouter>
 );

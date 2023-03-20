@@ -17,16 +17,11 @@ export const fetchSingleReview = (review_id) => {
   return forumsData.get('/reviews/' + review_id).then(({data})=>{
     return data.review
   })
-    .catch((err) => {
-      console.error(err);
-    });
 };
 
 export const fetchCommentsById = (review_id) => {
   return forumsData.get(`/reviews/${review_id}/comments`).then(({data})=>{
     return data.comments
-  }).catch((err)=>{
-    console.error(err)
   })
 }
 
@@ -61,8 +56,6 @@ export const postCommentById = (review_id, username, body) => {
     body: body,
   }).then(({data})=>{
     return data.comment
-  }).catch((err)=>{
-    console.error(err)
   })
 }
 
