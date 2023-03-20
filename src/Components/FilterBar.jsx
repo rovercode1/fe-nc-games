@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { fetchCategories, fetchReviewBySort } from "../api";
 import {capitalizeFirstLetter} from '../utils/utils'
-import '../styles/SortBy.css'
+import '../styles/FilterBar.css'
 
-export default function FilterBar({setSearchParams, setReviews}) {
+export default function FilterBar({setSearchParams, setReviews, setIsLoadingReviews, isLoadingFilters, setIsLoadingFilters }) {
+
   const [categories, setCategory] = useState([]);
   const sortBy =[
     "date",
@@ -18,18 +19,20 @@ export default function FilterBar({setSearchParams, setReviews}) {
   const [query, setQuery] = useState('')
 
   useEffect(() => {
+    setIsLoadingFilters(true)
     fetchCategories().then((categories) => {
       setCategory(categories);
+      setIsLoadingFilters(false)
     });
-  }, [requestedSort]);
-
-  
+  }, [requestedSort, setIsLoadingFilters]);
 
   useEffect(()=>{
+    setIsLoadingReviews(true)
     fetchReviewBySort(query).then((reviews)=>{
       setReviews(reviews)
+      setIsLoadingReviews(false)
     })
-  },[requestedSort, query, setReviews])
+  },[requestedSort, query, setReviews, setIsLoadingReviews])
   
   const handleSubmit = () => {
     if(requestedSort.category === ''){
@@ -56,7 +59,7 @@ export default function FilterBar({setSearchParams, setReviews}) {
 
   const displayFilterBar = ()=>{
     return (
-      <section id="sort-by">
+      <section id="filter-bar" className="responsive-container filter-bar">
         <form
           id="listing-form"
           onSubmit={handleSubmit}>
@@ -97,5 +100,17 @@ export default function FilterBar({setSearchParams, setReviews}) {
     );
   }
 
-  return displayFilterBar()
+ const displayLoadingBar = ()=>{
+  return (
+    <>
+    <section className="responsive-container filter-bar">
+      <div id="loading-filter-bar">
+        <h1>Loading...</h1>
+      </div>
+    </section>
+    </>
+  );
+  }
+  return isLoadingFilters ? displayLoadingBar() : displayFilterBar()
+
 }
