@@ -96,27 +96,30 @@
   flex: 1;
 }
 
-.review-card-tags > span {
+.review-card-tags > span, .review-card-tags > a {
   cursor: pointer;
   padding: 0px 27px;
   background: #afbbdb;
   margin: 0px 20px;
   align-items: center;
-  color: white;
+  color: #fff;
   text-align: center;
   display: flex;
   border-radius: 8px;
+  text-decoration: none;
 }
 
-.review-card-tags > span:hover {
+
+.review-card-tags > span:hover, .review-card-tags > a:hover {
   background: #c2cff3;
+  color: #fff;
 }
 
 .review-card-tags > h2{
   font-weight: 300;
 }
 
-.review-card-tags > span > p, .review-card-tags > h2 {
+.review-card-tags > span > p, .review-card-tags > a > p, .review-card-tags > h2 {
   margin: 0px;
   font-size: 14px;
   padding: 0px 10px;

@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../api";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import '../styles/SingleReview.css'
+export default function SingleReview({comments}) {
+  const [isLoadingSingleReviews, setLoadingSingleReviews] = useState(false)
 
-export default function SingleReview({ isLoading, setIsLoading, comments }) {
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState({});
   useEffect(() => {
-    setIsLoading(true);
+    setLoadingSingleReviews(true);
     fetchSingleReview(review_id).then((review) => {
       setSingleReview(review);
-      setIsLoading(false);
     });
-  }, [review_id, setIsLoading]);
+    setLoadingSingleReviews(false);
+  }, [review_id, setLoadingSingleReviews]);
 
   const displaySingleReview = (review, comments) => {
     return (
@@ -32,17 +33,19 @@ export default function SingleReview({ isLoading, setIsLoading, comments }) {
           <img src={review.review_img_url} alt={review.title}></img>
           <p>{review.review_body}</p>
           <div className="review-card-tags">
-            <span>
+            <Link to={`/reviews?category=${review.category}`}>
+            {/* <span> */}
               <p className="single-category"> {review.category}</p>
-            </span>
+            {/* </span> */}
+            </Link>
             <span>
-              {" "}
               <p className="single-designer">{review.designer}</p>
             </span>
           </div>
         </div>
         <div className="review-card-footer">
           <div className="review-card-stats">
+            
             <button> {review.votes} Votes</button>
             {/* <span>{!isLoading  && postedAt === undefined ? (<p> Posted <ReactTimeAgo date={new Date(postedAt.toString())} locale="en-US" /> </p>) : (false)}</span>          */}
           </div>
@@ -54,11 +57,7 @@ export default function SingleReview({ isLoading, setIsLoading, comments }) {
       </article>
     );
   };
-  return isLoading ? (
-    <h1 className="loading">Loading...</h1>
-  ) : (
-    <>
-    <section id="single-review">{displaySingleReview(singleReview, comments)}</section>
-    </>
-  );
+  return  <section id="single-review">{displaySingleReview(singleReview, comments)}</section>
+
+
 }
