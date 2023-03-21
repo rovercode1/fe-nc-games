@@ -58,7 +58,7 @@ export default function ArticleList({ reviews, setReviews }) {
       setIsLoadingReviews(false);
     });
   }, [setReviews]);
-  const displayReviews = (review) => {
+  const displayReviews = () => {
     return (
       <section id="reviews-container">
         {reviews.map((review) => {

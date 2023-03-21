@@ -91,7 +91,7 @@ export default function SingleReviewComments({ comments, setComments, err, setEr
 
 return commentErr ? null:(
   <>
-   {comments ?  <section id="comments"> {displayComments(comments)} </section>:null}
+   {comments ? displayComments(comments):null}
   </>
 )
 }
