@@ -3,23 +3,23 @@ import { fetchSingleReview } from "../api";
 import { useParams } from "react-router-dom";
 import '../styles/SingleReview.css'
 
-export default function SingleReview({ isLoading, setIsLoading, err, setError }) {
+export default function SingleReview({ isLoadingReviews, setIsLoadingReviews, err, setError }) {
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState(null);
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoadingReviews(true);
     fetchSingleReview(review_id).then((review) => {
-        setSingleReview(review);
-      setIsLoading(false);
+      setSingleReview(review);
+      setIsLoadingReviews(false);
     }).catch(({response})=>{
-      setIsLoading(false);
+      setIsLoadingReviews(false);
       setError(response.data.msg)
     })
-  }, [review_id, setIsLoading, setError]);
+  }, [review_id, setIsLoadingReviews, setError]);
 
   const displaySingleReview = (review) => {
-    return (
+    return isLoadingReviews?<h1>Loading...</h1> : (
       <div className="single-review-card" key={review.review_id}>
         <div className="loading">
         </div>
@@ -43,7 +43,6 @@ export default function SingleReview({ isLoading, setIsLoading, err, setError })
           </div>
           <div className="review-card-stats">
           <button> {review.votes} Votes</button>
-            {/* <span>{!isLoading  && postedAt === undefined ? (<p> Posted <ReactTimeAgo date={new Date(postedAt.toString())} locale="en-US" /> </p>) : (false)}</span>          */}
           </div>
         </div>
       </div>

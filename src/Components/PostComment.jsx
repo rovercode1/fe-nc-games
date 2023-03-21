@@ -3,11 +3,10 @@ import { postCommentById } from "../api"
 import { useParams } from "react-router-dom";
 import { optimisticPostedComment } from "../handle";
 
-export default function PostComment({setComments, isLoading, err}){
+export default function PostComment({setComments, isLoadingComments, err}){
   const { review_id } = useParams();
   const [postedComment, setPostedComment] = useState('')
   const currentUser = 'grumpy19'
-
   const handleSubmit = (e)=>{
     e.preventDefault();
     const postInput = e.target.childNodes[0]
@@ -19,12 +18,17 @@ export default function PostComment({setComments, isLoading, err}){
     })
   }
 
-  return isLoading ||err ?null:(
-  <section id='post-comment'>
+  const displayPostComment = ()=>{
+   return isLoadingComments ? null : (
+    <section id='post-comment'>
     <form action="" onSubmit={handleSubmit}>
       <textarea rows='6'  onChange={(event) => setPostedComment(event.target.value)} value={postedComment} required></textarea>
       <button type="submit">Submit</button>
     </form>
   </section>
-  )
+   )
+  }
+
+  return err ? null: displayPostComment()
+
 }

@@ -2,30 +2,41 @@ import { fetchCommentsById } from "../api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactTimeAgo from "react-time-ago";
+import PostComment from "./PostComment";
 
-export default function SingleReviewComments({ isLoading, setIsLoading, comments, setComments}) {
+export default function SingleReviewComments({comments, setComments, isLoadingComments, setIsLoadingComments}) {
   const { review_id } = useParams();
-  const [commentErr, setCommentErr] = useState(null)
+  const [commentErr, setCommentErr] = useState(false)
+  setComments(null)
+
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoadingComments(true);
     fetchCommentsById(review_id).then((comments) => {
-        setComments(comments);
-      setIsLoading(false);
+      setComments(comments);
+      setIsLoadingComments(false);
     }).catch((err)=>{
-      setIsLoading(false)
-      setCommentErr(true)
+      setCommentErr(err)
+      setIsLoadingComments(false)
     })
-  }, [review_id, setIsLoading, setComments]);
+  }, [review_id, setComments, setIsLoadingComments]);
+
+  const noComments = () => {
+    return (
+      <h1>No comments here!</h1>
+    )
+  }
 
   const displayComments = (comments) => {
-    return comments.length === 0?<h1>No comments here!</h1>:( 
+   return isLoadingComments? <p>Loading...</p> : <section id="comments">
+    { comments.length === 0 ?noComments() :( 
       <>
+      <PostComment/>
       <p id="comment_count">{comments.length} Comments</p>
       {comments.map((comment) => {
       return  <article key={comment.comment_id} className="comment-card">
           <div className="comment-header">
             <p>{comment.author}</p>
-            {!isLoading ? (
+            {!isLoadingComments? (
               <p>
                 Posted  <ReactTimeAgo
                   date={new Date(comment.created_at)}
@@ -43,15 +54,18 @@ export default function SingleReviewComments({ isLoading, setIsLoading, comments
             </span>
           </div>
         </article>
-
       })}
       </>
-    );
-  };
+    )
+  }
+      </section>
+    }
 
-  return isLoading ||commentErr ?null:(
+
+  return commentErr ? null:(
     <>
-      <section id="comments"> {displayComments(comments)} </section>
+     {comments ?  <section id="comments"> {displayComments(comments)} </section>:null}
     </>
   )
+
 }
