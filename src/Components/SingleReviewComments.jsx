@@ -7,8 +7,7 @@ import PostComment from "./PostComment";
 export default function SingleReviewComments({comments, setComments, isLoadingComments, setIsLoadingComments}) {
   const { review_id } = useParams();
   const [commentErr, setCommentErr] = useState(false)
-  setComments(null)
-
+  
   useEffect(() => {
     setIsLoadingComments(true);
     fetchCommentsById(review_id).then((comments) => {
@@ -16,6 +15,7 @@ export default function SingleReviewComments({comments, setComments, isLoadingCo
       setIsLoadingComments(false);
     }).catch((err)=>{
       setCommentErr(err)
+      setComments(null)
       setIsLoadingComments(false)
     })
   }, [review_id, setComments, setIsLoadingComments]);
