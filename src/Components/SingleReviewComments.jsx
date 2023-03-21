@@ -1,10 +1,13 @@
-import { fetchCommentsById } from "../api";
-import { useEffect, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import { useParams } from "react-router-dom";
+import { UserContext } from "../contexts/User";
+import { fetchCommentsById, deleteComment } from "../api";
+import { successfulDeletedComment } from "../utils/optimisticRendering";
 import ReactTimeAgo from "react-time-ago";
 import PostComment from "./PostComment";
 
-export default function SingleReviewComments({comments, setComments, isLoadingComments, setIsLoadingComments}) {
+export default function SingleReviewComments({ comments, setComments, err, setErr, isLoadingComments, setIsLoadingComments }) {
+  const { currentUser } = useContext(UserContext);
   const { review_id } = useParams();
   const [commentErr, setCommentErr] = useState(false)
   
@@ -26,46 +29,69 @@ export default function SingleReviewComments({comments, setComments, isLoadingCo
     )
   }
 
-  const displayComments = (comments) => {
-   return isLoadingComments? <p>Loading...</p> : <section id="comments">
-    { comments.length === 0 ?noComments() :( 
-      <>
-      <PostComment/>
-      <p id="comment_count">{comments.length} Comments</p>
-      {comments.map((comment) => {
-      return  <article key={comment.comment_id} className="comment-card">
-          <div className="comment-header">
-            <p>{comment.author}</p>
-            {!isLoadingComments? (
-              <p>
-                Posted  <ReactTimeAgo
-                  date={new Date(comment.created_at)}
-                  locale="en-US"
-                />
-              </p>
-            ) : (
-              false
-            )}
-          </div>
-          <p className="comment-body">{comment.body}</p>
-          <div className="comment-footer">
-            <span>
-              <p>{comment.votes} Votes</p>
-            </span>
-          </div>
-        </article>
-      })}
-      </>
+  const handleDelete = (e) => {
+    const clickedComment = e.target;
+    deleteComment(+clickedComment.id).then(() => {
+      successfulDeletedComment(e, setComments);
+    });
+  };
+
+  const isCurrentUser = (currentUser, comment) => {
+    if (currentUser === comment.author) {
+      return (
+        <button
+          id={comment.comment_id}
+          className="button"
+          onClick={handleDelete}
+        >
+          Delete
+        </button>
+      );
+    }
+  };
+  const displayComments = () => {
+    return isLoadingComments?<h1>Loading...</h1>:(
+       comments.length === 0 ?noComments() :( 
+     ( <section id="comments">
+        <PostComment/>
+        {comments.map((comment) => {
+          return (
+            <article
+              id={comment.comment_id}
+              key={comment.comment_id}
+              className="comment-card"
+            >
+              <div className="comment-header">
+                <p>{comment.author}</p>
+                {!isLoadingComments ? (
+                  <p>
+                    <ReactTimeAgo
+                      date={new Date(comment.created_at)}
+                      locale="en-US"
+                    />
+                  </p>
+                ) : null}
+              </div>
+              <p className="comment-body">{comment.body}</p>
+              <div className="comment-footer">
+                <button>{comment.votes} Votes</button>
+                {isCurrentUser(currentUser, comment, setComments)}
+              </div>
+            </article>
+          );
+        })}
+        
+      </section>
+    )
+
+    )
     )
   }
-      </section>
-    }
 
 
-  return commentErr ? null:(
-    <>
-     {comments ?  <section id="comments"> {displayComments(comments)} </section>:null}
-    </>
-  )
-
+return commentErr ? null:(
+  <>
+   {comments ?  <section id="comments"> {displayComments(comments)} </section>:null}
+  </>
+)
 }

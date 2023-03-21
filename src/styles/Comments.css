@@ -1,5 +1,5 @@
 #comments{
-  width: 70%;
+  width: 60%;
   margin: auto;
   padding-top: 50px;
   margin-top: 50px;
@@ -10,13 +10,7 @@
   font-size: 30px;
 }
 
-#posting {
-  background: #cde0f1;
-}
 
-#posted{
-  background: #a9f588;
-}
 
 .comment-card{
   border-radius: 5px;
@@ -28,11 +22,11 @@
 
 .comment-header{
   display: flex;
-  justify-content: space-around;
-  border-bottom: 1px solid gainsboro;
-  background: #f0f0f0;
-  border-radius: 10px 10px 0px 0px;
-
+  justify-content: left;
+  border-bottom: 1px solid white;
+  background: #fcfcfc;
+  border-radius: 5px;
+  margin: 0px;
 }
 
 .comment-header > *{
@@ -47,6 +41,7 @@
   font-size: 20px;
   text-align: left;
   padding: 0px 10px;
+  margin: 29px 10px;
 }
 
 .comment-footer{
@@ -56,11 +51,18 @@
   border-top: 1px solid #d7d5d5;
 }
 
-.comment-footer span{
-  background: #e3e6e8;
+.comment-footer button{
+  background: #f7fcff;
   padding: 6px 18px;
   margin: 7px;
-  border-radius: 2px;
+  border-radius: 16px;
+  cursor: pointer;
+  border: 1px solid #c0c0c0;
+}
+
+.comment-footer span:hover{
+  background: #f2f4f6;
+
 }
 
 .comment-footer p{
@@ -82,7 +84,7 @@
 }
 
 #post-comment{
-  width: 70%;
+  width: 60%;
   margin: auto;
 }
 
@@ -112,4 +114,26 @@ textarea{
   resize: none;
   width: 100%;
   font-size: 30px;
+}
+
+@media screen and (max-width: 1000px) {
+  #comments{
+    width: 70%;
+  }
+  #post-comment{
+    width: 70%;
+  }
+
+}
+
+@media screen and (max-width: 650px) {
+
+  #post-comment{
+    width: 95%;
+  }
+
+  #comments{
+    width:95%;
+  }
+
 }

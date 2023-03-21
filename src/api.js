@@ -25,15 +25,6 @@ export const fetchCommentsById = (review_id) => {
   })
 }
 
-
-  export const fetchCategories = ()=>{
-    return forumsData.get(`/categories`).then(({data})=>{
-      return data.categories
-    }).catch((err)=>{
-      console.error(err)
-    })
-  }
-
   export const fetchReviewsByCategories = (category_name)=>{
     return forumsData.get(`/reviews?category=${category_name}`).then(({data})=>{
       return data.reviews
@@ -42,12 +33,35 @@ export const fetchCommentsById = (review_id) => {
     })
   }
 
+  export const fetchCategories = ()=>{
+    return forumsData.get(`/categories`).then(({data})=>{
+      return data.categories
+    }).catch((err)=>{
+      console.error(err)
+    })
+  }
+  export const fetchReviewBySort = (query)=>{
+    return forumsData.get(`/reviews${query}`).then(({data})=>{
+      return data.reviews
+    }).catch((err)=>{
+      console.error(err)
+    })
+  }
+
+
 export const postCommentById = (review_id, username, body) => {
   return forumsData.post(`/reviews/${review_id}/comments`,{
     username: username,
     body: body,
   }).then(({data})=>{
     return data.comment
+  })
+}
+
+export const deleteComment = (comment_id)=>{
+  return forumsData.delete(`/comments/${comment_id}`)
+  .then(({data})=>{
+    // return data.comment
   }).catch((err)=>{
     console.error(err)
   })

@@ -1,15 +1,14 @@
-import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import "./App.css";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from './Components/Header';
-import ArticleList from './Components/ArticleList'
-import ReviewsByCategories from './Components/ReviewsByCategories';
 import SinglePage from "./Components/SinglePage";
 import ErrorPage from './Components/ErrorPage';
-
-import { useState } from 'react';
+import ArticleList from "./Components/ArticleList";
+import ReviewsByCategories from './Components/ReviewsByCategories';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
   return (
     <div className="App">
@@ -20,26 +19,22 @@ function App() {
           path="/"
           element={
             <ArticleList
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
-              setReviews={setReviews}
               reviews={reviews}
+              setReviews={setReviews}
             />
           }
         />
         <Route
           path="/reviews/:review_id"
           element={
-            <SinglePage
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
+            <SinglePage     
               setReviews={setReviews}
             />
           }
         />
         <Route
           path="/reviews"
-          element={<ReviewsByCategories isLoading={isLoading} setIsLoading={setIsLoading}/>}
+          element={<ReviewsByCategories    />}
         />
       </Routes>
     </div>
