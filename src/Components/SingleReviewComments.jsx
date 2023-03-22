@@ -50,10 +50,10 @@ export default function SingleReviewComments({ comments, setComments, err, setEr
     }
   };
   const displayComments = () => {
-    return isLoadingComments?<h1>Loading...</h1>:(
+    return isLoadingComments?<h1>Loading comments...</h1>:(
        comments.length === 0 ?noComments() :( 
      ( <section id="comments">
-        <PostComment/>
+        <PostComment setComments={setComments} err={err} isLoadingComments={isLoadingComments} />
         {comments.map((comment) => {
           return (
             <article

@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { fetchSingleReview } from "../api";
 import { useParams, Link } from "react-router-dom";
 import '../styles/SingleReview.css'
-export default function SingleReview({ isLoadingSingleReviews, setIsLoadingReviews, err, setError, comments }) {
+export default function SingleReview({err, setError, comments }) {
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState([]);
+  const [isLoadingSingleReviews, setIsLoadingReviews] = useState(true)
 
   useEffect(() => {
     setIsLoadingReviews(true);
@@ -18,20 +19,19 @@ export default function SingleReview({ isLoadingSingleReviews, setIsLoadingRevie
   }, [review_id, setIsLoadingReviews, setError]);
 
 
-  // const loadingData = [
-  //   {
-  //     owner: "lorem ip",
-  //     created_at:'Lorem ipsum dolor sit.',
-  //     title: "Lorem ipsum dolor sit amet consectetur a",
-  //     votes: 100,
-  //     comment_count: 2,
-  //   }
-  // ]
+  const loadingData = [
+    {
+      owner: "lorem ip",
+      created_at:'Lorem ipsum dolor sit.',
+      title: "Lorem ipsum dolor sit amet consectetur a",
+      votes: 100,
+      comment_count: 2,
+    }
+  ]
 
   const loadingSingleReview = ()=>{
   return (<article
-    className="single-review-card loading-single-card"
-    >
+    className="single-review-card loading-single-card">
     <div className="review-card-header">
         <span> <p>orem ipm </p> </span>
       <span><p>orem ipm dolooo lol</p></span>
@@ -42,9 +42,8 @@ export default function SingleReview({ isLoadingSingleReviews, setIsLoadingRevie
       </span>
       <div id='single-loading-img'></div>
       <span>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus fuga numquam eum doloribus debitis aliquid quibusdam necessitatibus corporis voluptas beatae nesciunt hic magnam molestias vitae at fugit qui, iure nobis.</p>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque officiis sit aspernatur nam quia ad eligendi sed, rerum neque voluptatibus cumque harum earum, modi, voluptatem commodi sunt enim illum labore possimus maiores sapiente iste. Rem quia ipsa voluptate ea id, cupiditate quo, optio alias nemo deleniti, accusantium corporis error veritatis iure eligendi tenetur porro ad mollitia beatae cumque a commodi? Quidem dolores nihil exercitationem molestias, neque fugit atque, dolore, ab aliquam dicta optio? Necessitatibus totam alias modi nesciunt quam placeat eos, vero voluptatem! Maiores corrupti aut consectetur facilis totam. Quam modi inventore tenetur velit cupiditate, alias consequatur eum officiis. Tempora!</p>
       </span>
-
       <div className="review-card-tags">
         <span className="single-category">
            lorem ips
@@ -66,7 +65,7 @@ export default function SingleReview({ isLoadingSingleReviews, setIsLoadingRevie
   }
 
   const displaySingleReview = (review, comments) => {
-    return isLoadingSingleReviews? loadingSingleReview():(
+    return isLoadingSingleReviews ?loadingSingleReview():(
       <article
         id={review.review_id}
         className="single-review-card"
@@ -105,8 +104,8 @@ export default function SingleReview({ isLoadingSingleReviews, setIsLoadingRevie
     const nonExistentReview = ()=>{
     return (
       <> 
-      <h1>   Oops! this page doesn’t exist. </h1> 
-      <p>   Vaild reviews will be displayed on the <Link to={'/'}>home</Link> page. </p>
+      <h1> Oops! this page doesn’t exist. </h1> 
+      <p> Vaild reviews will be displayed on the <Link to={'/'}>home</Link> page. </p>
       </>
     );
   }
@@ -114,6 +113,7 @@ export default function SingleReview({ isLoadingSingleReviews, setIsLoadingRevie
   return  err ?  nonExistentReview():(
     <>
     <section id="single-review">{displaySingleReview(singleReview, comments)}</section>
+    {/* <section id="single-review">{loadingSingleReview()}</section> */}
     </>
   );
 

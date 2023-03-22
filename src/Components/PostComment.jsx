@@ -6,24 +6,25 @@ import { successfulPostedComment, postingComment, unsuccessfulPostedComment } fr
 import '../styles/Comments.css'
 import '../App.css'
 
-export default function PostComment({setComments, err, setErr, isLoadingComments}){
+export default function PostComment({setComments, err, isLoadingComments}){
   const { currentUser } = useContext(UserContext);
   const { review_id } = useParams();
   const [postedComment, setPostedComment] = useState('')
-  const [postedErr, setPostErr] = useState(false)
+
 
   const handleSubmit = (e)=>{
     e.preventDefault();
     const postInput = e.target.childNodes[0]
     const postButton = e.target.childNodes[1]
     postingComment(postInput, postButton)
-    postCommentById(review_id, currentUser, postedComment ).then((newComment)=>{
+    postCommentById(review_id, currentUser, postedComment )
+    .then((newComment)=>{
       successfulPostedComment(postInput, postButton, setPostedComment)
-      setPostErr(false)
+
       setComments((prevComments)=> [newComment,...prevComments])
     }).catch(()=>{
       unsuccessfulPostedComment(postInput, postButton, setPostedComment)
-      setPostErr(true)
+
     })
   }
 
