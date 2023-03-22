@@ -6,6 +6,9 @@
 
 #header{
   margin-bottom: 70px;
+  display: flex;
+  width: 80%;
+  margin: auto;
 }
 
 #header > h1{
