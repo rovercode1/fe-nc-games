@@ -4,3 +4,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## About
 Games-forum is a C.R.U.D (create, read, update, delete) React application. It is used for content rating and discussions. The games are divided into separate categories, each review has a ratings feature and can be voted up or down by the users. Users can also add and delete their own comments on a  single review.
+
+Link: https://aquamarine-conkies-2e9fe6.netlify.app/
