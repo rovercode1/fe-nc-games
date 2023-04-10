@@ -6,35 +6,28 @@ import SinglePage from "./Components/SinglePage";
 import ErrorPage from './Components/ErrorPage';
 import ArticleList from "./Components/ArticleList";
 import ReviewsByCategories from './Components/ReviewsByCategories';
+import Endpoints from "./Components/Endpoints";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [reviews, setReviews] = useState([]);
   return (
     <div className="App">
-      <Header/>
+      <Header />
       <Routes>
-      <Route path="*" element={<ErrorPage/>} />
+        <Route path="*" element={<ErrorPage />} />
         <Route
           path="/"
-          element={
-            <ArticleList
-              reviews={reviews}
-              setReviews={setReviews}
-            />
-          }
+          element={<ArticleList reviews={reviews} setReviews={setReviews} />}
         />
         <Route
           path="/reviews/:review_id"
-          element={
-            <SinglePage     
-              setReviews={setReviews}
-            />
-          }
+          element={<SinglePage setReviews={setReviews} />}
         />
+        <Route path="/reviews" element={<ReviewsByCategories />} />
         <Route
-          path="/reviews"
-          element={<ReviewsByCategories    />}
+          path="/endpoints"
+          element={<Endpoints/>}
         />
       </Routes>
     </div>

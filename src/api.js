@@ -4,6 +4,16 @@ const forumsData = axios.create({
   baseURL: 'https://games-forum.onrender.com/api',
 });
 
+export const fetchApiEndpoints = () => {
+  return forumsData.get('/').then(({data})=>{
+    return data
+  })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+
 export const fetchAllReviews = () => {
   return forumsData.get('/reviews').then(({data})=>{
     return data.reviews

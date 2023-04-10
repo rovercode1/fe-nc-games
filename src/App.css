@@ -17,6 +17,36 @@
     font-size: 40px;
     text-align: left;
     background: #efefef;
+  }
+
+#endpoints{
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+
+#endpoints div{
+  text-align: left;
+
+}
+
+#endpoints code span.string {
+  color: green;
+}
+
+#endpoints code{
+  white-space: pre;
+  font-family: monospace;
+  font-size: 1em;
+}
+
+.endpoint{
+  border-bottom: 2px solid #ddd;
+  width: 100%;
+  padding: 30px 0px;
 }
 
 .button{
@@ -27,6 +57,10 @@
   border: 1px solid #ebebeb;
   background: aliceblue;
   font-size: 16px;
+}
+.button:hover{
+  background: rgb(255, 255, 255);
+
 }
 
 #loading-dog{
