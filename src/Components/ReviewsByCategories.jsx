@@ -3,11 +3,11 @@ import { useLocation, Link } from "react-router-dom";
 import { fetchReviewsByCategories } from "../api";
 import { fetchDog } from "../utils/optimisticRendering";
 import CategoryMenu from "./CategoryMenu";
+import VotesButton from "./VotesButton";
 import "../styles/MultipleReviews.css";
 
 export default function ReviewsByCategories() {
-  const [ loadingReviewsByCategogies, setLoadingReviewsByCategories ] =
-    useState(true);
+  const [ loadingReviewsByCategogies, setLoadingReviewsByCategories ] = useState(true);
   const [ isLoadingDog, setLoadingDog ] = useState(true);
   const [categoryReviews, setCategoryReviews] = useState([]);
   const [dog, setDog] = useState("");
@@ -82,12 +82,10 @@ export default function ReviewsByCategories() {
                   <Link to={`/reviews/${review.review_id}`}>
                     <img src={review.review_img_url} alt={review.title}></img>
                   </Link>
-                  <div className="review-card-bottom">
+                  <div className="review-bottom">
                     <h3>{review.title}</h3>
                     <div className="review-card-button">
-                      <button className="button" id={review.votes}>
-                        {review.votes} Votes
-                      </button>
+                    <VotesButton review={review}/>
                       <Link to={`/reviews/${review.review_id}`}>
                         <button className="button">
                           {review.comment_count} Comment

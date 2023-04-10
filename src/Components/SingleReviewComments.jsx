@@ -5,11 +5,11 @@ import { fetchCommentsById, deleteComment } from "../api";
 import { successfulDeletedComment } from "../utils/optimisticRendering";
 import ReactTimeAgo from "react-time-ago";
 import PostComment from "./PostComment";
-
+import VotesButton from "./VotesButton";
 export default function SingleReviewComments({ comments, setComments, err, setErr, isLoadingComments, setIsLoadingComments }) {
   const { currentUser } = useContext(UserContext);
   const { review_id } = useParams();
-  const [commentErr, setCommentErr] = useState(false)
+  const [commentErr, setCommentErr] = useState(false);
   
   useEffect(() => {
     setIsLoadingComments(true);
@@ -90,8 +90,6 @@ export default function SingleReviewComments({ comments, setComments, err, setEr
 
 
 return commentErr ? null:(
-  <>
-   {comments ? displayComments(comments):null}
-  </>
+  <>{comments ? displayComments(comments):null}</>
 )
 }
