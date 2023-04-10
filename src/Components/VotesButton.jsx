@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { updateReviewVotes } from "../api";
+import { updateReviewVotes, updateCommentVotes } from "../api";
 import { successfulVotedReview } from "../utils/optimisticRendering";
 export default function VotesButton ({review, comment}){
   
@@ -14,7 +14,7 @@ export default function VotesButton ({review, comment}){
   },[inc_votes])
   const handleVotes = (e)=>{
   const button = e.target
-  successfulVotedReview(review)
+  successfulVotedReview(button)
   const isPressed =  button.className === 'button' 
   isPressed ? setIncVotes('-1') : setIncVotes('+1');
   }

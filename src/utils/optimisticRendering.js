@@ -44,6 +44,7 @@ export const successfulDeletedComment = (e, setComments)=>{
 }
 
 export const successfulVotedReview = (button)=>{
+  console.log(button)
   let currentVotes = button.innerText.split(' ')[0]
   const isPressed =  button.className === 'button' 
   isPressed ? button.className='button pressed' : button.className='button'
