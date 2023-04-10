@@ -10,8 +10,6 @@ export default function PostComment({setComments, err, isLoadingComments}){
   const { currentUser } = useContext(UserContext);
   const { review_id } = useParams();
   const [postedComment, setPostedComment] = useState('')
-
-
   const handleSubmit = (e)=>{
     e.preventDefault();
     const postInput = e.target.childNodes[0]
@@ -20,7 +18,6 @@ export default function PostComment({setComments, err, isLoadingComments}){
     postCommentById(review_id, currentUser, postedComment )
     .then((newComment)=>{
       successfulPostedComment(postInput, postButton, setPostedComment)
-
       setComments((prevComments)=> [newComment,...prevComments])
     }).catch(()=>{
       unsuccessfulPostedComment(postInput, postButton, setPostedComment)
@@ -44,5 +41,5 @@ export default function PostComment({setComments, err, isLoadingComments}){
     </form>
   </section>
   }
-  return err?null:displayPostComment()
+  return err ? null : displayPostComment()
 }

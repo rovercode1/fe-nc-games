@@ -10,8 +10,6 @@
   font-size: 30px;
 }
 
-
-
 .comment-card{
   border-radius: 5px;
   background: #ffffff;
@@ -115,17 +113,9 @@ textarea{
   #comments{
     width: 70%;
   }
-  #post-comment{
-    width: 70%;
-  }
-
 }
 
 @media screen and (max-width: 650px) {
-
-  #post-comment{
-    width: 95%;
-  }
 
   #comments{
     width:95%;

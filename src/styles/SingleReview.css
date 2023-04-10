@@ -30,6 +30,12 @@
   font-size: 12px;
 }
 
+#single-page .pressed{
+  background:#0d6efd;
+  color:white;
+}
+
+
 #single-page form{
   align-items: flex-end;
   display: flex;
@@ -44,6 +50,13 @@
   background: rgb(247, 250, 252);
   color:#545454;
 }
+
+#single-page .pressed:hover{
+  background:#5397fd;
+  color:white;
+}
+
+
 
 .review-card-header{
   padding: 10px;
