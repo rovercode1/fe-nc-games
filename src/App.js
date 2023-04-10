@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from './Components/Header';
 import SinglePage from "./Components/SinglePage";
+import ErrorPage from './Components/ErrorPage';
 import ArticleList from "./Components/ArticleList";
 import ReviewsByCategories from './Components/ReviewsByCategories';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,6 +14,7 @@ function App() {
     <div className="App">
       <Header/>
       <Routes>
+      <Route path="*" element={<ErrorPage/>} />
         <Route
           path="/"
           element={

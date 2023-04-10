@@ -26,4 +26,12 @@
 .input-box select{
   padding: 10px;
   border-radius: 5px;
+  cursor: pointer;
+  background: white;
+}
+
+@media screen and (max-width: 875px) {
+#listing-form{
+  flex-direction: column;
+}
 }

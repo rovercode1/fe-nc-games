@@ -4,22 +4,30 @@ import { UserContext } from "../contexts/User";
 import { fetchCommentsById, deleteComment } from "../api";
 import { successfulDeletedComment } from "../utils/optimisticRendering";
 import ReactTimeAgo from "react-time-ago";
-
-export default function SingleReviewComments({ comments, setComments, err, setErr, isLoadingComments,setLoadingComments }) {
+import PostComment from "./PostComment";
+import VotesButton from "./VotesButton";
+export default function SingleReviewComments({ comments, setComments, err, setErr, isLoadingComments, setIsLoadingComments }) {
   const { currentUser } = useContext(UserContext);
   const { review_id } = useParams();
+  const [commentErr, setCommentErr] = useState(false);
+  
   useEffect(() => {
-    setLoadingComments(true);
-    fetchCommentsById(review_id)
-      .then((comments) => {
-        setComments(comments);
-        setLoadingComments(false);
-      })
-      .catch((err) => {
-        setErr(err)
-        setLoadingComments(false);
-      });
-  }, [review_id, setComments, setErr, setLoadingComments]);
+    setIsLoadingComments(true);
+    fetchCommentsById(review_id).then((comments) => {
+      setComments(comments);
+      setIsLoadingComments(false);
+    }).catch((err)=>{
+      setCommentErr(err)
+      setComments(null)
+      setIsLoadingComments(false)
+    })
+  }, [review_id, setComments, setIsLoadingComments]);
+
+  const noComments = () => {
+    return (
+      <h1>No comments here!</h1>
+    )
+  }
 
   const handleDelete = (e) => {
     const clickedComment = e.target;
@@ -42,11 +50,10 @@ export default function SingleReviewComments({ comments, setComments, err, setEr
     }
   };
   const displayComments = () => {
-    return isLoadingComments?<h1>Loading...</h1>:(
-     comments.length === 0 ? (
-      <h1>No comments here!</h1>
-    ) : (
-      <section id="comments">
+    return isLoadingComments?<h1>Loading comments...</h1>:(
+       comments.length === 0 ?noComments() :( 
+     ( <section id="comments">
+        <PostComment setComments={setComments} err={err} isLoadingComments={isLoadingComments} />
         {comments.map((comment) => {
           return (
             <article
@@ -73,10 +80,16 @@ export default function SingleReviewComments({ comments, setComments, err, setEr
             </article>
           );
         })}
+        
       </section>
     )
-    )
-  };
 
-  return err? null: displayComments()
+    )
+    )
+  }
+
+
+return commentErr ? null:(
+  <>{comments ? displayComments(comments):null}</>
+)
 }

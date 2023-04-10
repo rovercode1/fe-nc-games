@@ -33,7 +33,6 @@ export const fetchCommentsById = (review_id) => {
     })
   }
 
-
   export const fetchCategories = ()=>{
     return forumsData.get(`/categories`).then(({data})=>{
       return data.categories
@@ -49,13 +48,30 @@ export const fetchCommentsById = (review_id) => {
     })
   }
 
-
 export const postCommentById = (review_id, username, body) => {
   return forumsData.post(`/reviews/${review_id}/comments`,{
     username: username,
     body: body,
   }).then(({data})=>{
     return data.comment
+  })
+}
+
+export const updateReviewVotes = (review_id, inc_votes)=>{
+  return forumsData.patch(`/reviews/${review_id}`, {inc_votes: inc_votes})
+  .then(({data})=>{
+    return data
+  }).catch((err)=>{
+    console.error(err);
+  })
+}
+
+export const updateCommentVotes = (review_id, comment_id, inc_votes)=>{
+  return forumsData.patch(`reviews/${review_id}/${comment_id}`, {inc_votes: inc_votes})
+  .then(({data})=>{
+    return data
+  }).catch((err)=>{
+    console.error(err);
   })
 }
 

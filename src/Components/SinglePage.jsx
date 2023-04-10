@@ -1,17 +1,17 @@
 import SingleReview from "./SingleReview"
 import SingleReviewComments from "./SingleReviewComments"
-import PostComment from "./PostComment"
 import { useState } from "react"
 import '../styles/Comments.css'
 export default function SinglePage ({setReviews}){
   const [comments, setComments] = useState([]);
-  const [err, setErr] = useState(null);
-  const [isLoadingComments, setLoadingComments] = useState(false)
+  const [err, setError] = useState(false)
+  const [isLoadingReviews, setIsLoadingReviews] = useState(true)
+  const [isLoadingComments, setIsLoadingComments] = useState(true)
   return (
     <section id='single-page'>
-      <SingleReview   setReviews={setReviews} comments={comments} err={err} setErr={setErr}/>
-      <PostComment  comments={comments} setComments={setComments}  err={err} setErr={setErr} isLoadingComments={isLoadingComments} />
-      <SingleReviewComments  comments={comments} setComments={setComments}  err={err} setErr={setErr} isLoadingComments={isLoadingComments} setLoadingComments={setLoadingComments}/>
+      {err?<h1>Error! {err}</h1>:null}
+      <SingleReview  isLoadingReviews={isLoadingReviews} setIsLoadingReviews={setIsLoadingReviews} setReviews={setReviews}  err={err} setError={setError} comments={comments}/>
+      <SingleReviewComments isLoadingComments={isLoadingComments} setIsLoadingComments={setIsLoadingComments} comments={comments} setComments={setComments}  />
     </section>
   )
 }

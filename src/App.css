@@ -6,6 +6,9 @@
 
 #header{
   margin-bottom: 70px;
+  display: flex;
+  width: 80%;
+  margin: auto;
 }
 
 #header > h1{
@@ -148,4 +151,12 @@
     width: 100%;
 }
 
+#category-review{
+  width: 50%;
+  margin: auto;
+}
+
+#error-page{
+  font-weight: 300;
+}
 }

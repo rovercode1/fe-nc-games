@@ -3,30 +3,18 @@ import { useLocation, Link } from "react-router-dom";
 import { fetchReviewsByCategories } from "../api";
 import { fetchDog } from "../utils/optimisticRendering";
 import CategoryMenu from "./CategoryMenu";
+import VotesButton from "./VotesButton";
 import "../styles/MultipleReviews.css";
 
 export default function ReviewsByCategories() {
-  const [ loadingReviewsByCategogies, setLoadingReviewsByCategories ] =
-    useState(false);
-  const [ isLoadingDog, setLoadingDog ] = useState(false);
+  const [ loadingReviewsByCategogies, setLoadingReviewsByCategories ] = useState(true);
+  const [ isLoadingDog, setLoadingDog ] = useState(true);
   const [categoryReviews, setCategoryReviews] = useState([]);
   const [dog, setDog] = useState("");
   const search = useLocation().search;
   const category = new URLSearchParams(search).get("category");
   let category_name = category.replaceAll("'", "%27");
   const queryCategory = category_name.replaceAll(" ", "-");
-
-  const noReviews = (dog, category_name) => {
-    return (
-      <>
-        <h1>
-          Oops! No '<strong>{category_name}</strong>' reviews found.
-        </h1>
-        <h3>Here, have a dog!</h3>
-        <img src={dog} alt="cute doggy" />
-      </>
-    );
-  };
 
   useEffect(() => {
     setLoadingReviewsByCategories(true);
@@ -50,7 +38,6 @@ export default function ReviewsByCategories() {
 
   const loadingDog = (category_name)=>{
     return ( <>
-    <h1>Oops! No <strong>'{category_name}'</strong> reviews found.</h1>
     <div id='loading-dog'>
       <h1>Loading dog...</h1>
     </div> 
@@ -58,9 +45,21 @@ export default function ReviewsByCategories() {
     )
   }
 
+  const noReviews = (dog, category_name) => {
+    return (
+      <>
+        <h1>
+          Oops! No '<strong>{category_name}</strong>' reviews found.
+        </h1>
+        <h3>Here, have a dog!</h3>
+        {isLoadingDog? loadingDog():<img src={dog} alt="cute doggy" /> }
+      </>
+    );
+  };
+
   const displayCategoryReviews = () => {
     return categoryReviews.length < 1 ? (
-      isLoadingDog ?loadingDog(category_name): noReviews(dog, category_name)
+     noReviews(dog, category_name)
     ) : (
       <>
         <CategoryMenu />
@@ -83,12 +82,10 @@ export default function ReviewsByCategories() {
                   <Link to={`/reviews/${review.review_id}`}>
                     <img src={review.review_img_url} alt={review.title}></img>
                   </Link>
-                  <div className="review-card-bottom">
+                  <div className="review-bottom">
                     <h3>{review.title}</h3>
                     <div className="review-card-button">
-                      <button className="button" id={review.votes}>
-                        {review.votes} Votes
-                      </button>
+                    <VotesButton review={review}/>
                       <Link to={`/reviews/${review.review_id}`}>
                         <button className="button">
                           {review.comment_count} Comment
