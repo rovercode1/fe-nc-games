@@ -74,7 +74,7 @@ export default function SingleReviewComments({ comments, setComments, err, setEr
               </div>
               <p className="comment-body">{comment.body}</p>
               <div className="comment-footer">
-                <button>{comment.votes} Votes</button>
+                <VotesButton comment={comment}/>
                 {isCurrentUser(currentUser, comment, setComments)}
               </div>
             </article>
