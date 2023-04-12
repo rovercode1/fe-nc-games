@@ -1,25 +1,37 @@
 .App {
   text-align: center;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-
-#header{
+#header {
   margin-bottom: 70px;
   display: flex;
-  width: 80%;
   margin: auto;
+  padding: 10px;
+  background: #eeeeee;
+  margin-bottom: 20px;
 }
 
-#header > h1{
-  padding: 20px;
-    margin: 20px;
-    font-size: 40px;
-    text-align: left;
-    background: #efefef;
-  }
 
-#endpoints{
+
+#header > h1 {
+  padding: 20px;
+  margin: 20px;
+  font-size: 20px;
+  text-align: left;
+}
+
+#header  > a  {
+  text-decoration: none;
+}
+
+#header > a > h1 {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+#endpoints {
   display: flex;
   flex-direction: column;
   justify-content: left;
@@ -27,29 +39,35 @@
   padding: 20px;
 }
 
-
-#endpoints div{
+#endpoints div {
   text-align: left;
-
 }
 
 #endpoints code span.string {
   color: green;
 }
 
-#endpoints code{
+#endpoints code {
   white-space: pre;
   font-family: monospace;
   font-size: 1em;
 }
 
-.endpoint{
+.exmapleCode{
+  background: #2e2e39;
+  margin: 10px;
+  border-radius: 5px;
+  color: #d0c8d2;
+  padding: 10px;
+}
+
+.endpoint {
   border-bottom: 2px solid #ddd;
   width: 100%;
   padding: 30px 0px;
 }
 
-.button{
+.button {
   cursor: pointer;
   font-weight: 500;
   padding: 5px 25px;
@@ -58,15 +76,14 @@
   background: aliceblue;
   font-size: 16px;
 }
-.button:hover{
+.button:hover {
   background: rgb(255, 255, 255);
-
 }
 
-#loading-dog{
+#loading-dog {
   width: 300px;
   height: 300px;
-  background:#e7e7e7;
+  background: #e7e7e7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,8 +92,8 @@
   margin: auto;
 }
 
-#loading-filter-bar{
-  background: #e7e7e7;;
+#loading-filter-bar {
+  background: #e7e7e7;
   height: 103px;
   width: 100%;
   display: flex;
@@ -86,12 +103,12 @@
   color: #b2b2b2;
 }
 
-.responsive-container{
+.responsive-container {
   width: 50%;
   margin: auto;
 }
 
-.loading-review-img{
+.loading-review-img {
   background: #e7e7e7;
   width: 100%;
 }
@@ -102,26 +119,25 @@
   display: inline;
 }
 
-.loading-single-card{
+.loading-single-card {
   color: transparent;
 }
 
-
-
-.loading-single-card .review-card-body p,.loading-single-card .review-card-body h2 {
+.loading-single-card .review-card-body p,
+.loading-single-card .review-card-body h2 {
   display: inline;
   background: #e7e7e7;
   padding: 0px;
   color: transparent;
 }
 
-.loading-single-card .review-card-tags > span{
+.loading-single-card .review-card-tags > span {
   background: #e7e7e7;
   color: transparent;
   display: inline;
 }
 
-.loading-single-card .review-card-header{
+.loading-single-card .review-card-header {
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -130,7 +146,7 @@
 .loading-single-card .review-card-header p {
   margin: 0px;
   text-align: left;
-  background:#e7e7e7;
+  background: #e7e7e7;
   display: inline;
 }
 
@@ -151,46 +167,45 @@
   align-items: center;
 }
 
-.loading-review .review-card-header{
+.loading-review .review-card-header {
   display: flex;
   flex-direction: column;
   text-align: left;
 }
 
-#single-loading-img{
+#single-loading-img {
   background: #e7e7e7;
   width: 100%;
   height: 400px;
 }
 
 #reviews-container .loading-review .button {
-  background:#e7e7e7;
+  background: #e7e7e7;
 }
-
 
 @media screen and (max-width: 1280px) {
-  .responsive-container{
+  .responsive-container {
     width: 70%;
-}
+  }
 }
 
 @media screen and (max-width: 875px) {
   .responsive-container {
     width: 90%;
-}
+  }
 }
 
 @media screen and (max-width: 670px) {
   .responsive-container {
     width: 100%;
-}
+  }
 
-#category-review{
-  width: 50%;
-  margin: auto;
-}
+  #category-review {
+    width: 50%;
+    margin: auto;
+  }
 
-#error-page{
-  font-weight: 300;
-}
+  #error-page {
+    font-weight: 300;
+  }
 }
