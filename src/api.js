@@ -30,7 +30,7 @@ export const fetchSingleReview = (review_id) => {
 };
 
 export const fetchCommentsById = (review_id) => {
-  return forumsData.get(`/reviews/${review_id}/comments`).then(({data})=>{
+  return forumsData.get(`/comments/review/${review_id}`).then(({data})=>{
     return data.comments
   })
 }
@@ -59,7 +59,7 @@ export const fetchCommentsById = (review_id) => {
   }
 
 export const postCommentById = (review_id, username, body) => {
-  return forumsData.post(`/reviews/${review_id}/comments`,{
+  return forumsData.post(`/comments/review/${review_id}`,{
     username: username,
     body: body,
   }).then(({data})=>{
@@ -76,8 +76,8 @@ export const updateReviewVotes = (review_id, inc_votes)=>{
   })
 }
 
-export const updateCommentVotes = (review_id, comment_id, inc_votes)=>{
-  return forumsData.patch(`reviews/${review_id}/${comment_id}`, {inc_votes: inc_votes})
+export const updateCommentVotes = (comment_id, inc_votes)=>{
+  return forumsData.patch(`/comments/${comment_id}`, {inc_votes: inc_votes})
   .then(({data})=>{
     return data
   }).catch((err)=>{
