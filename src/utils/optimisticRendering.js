@@ -47,7 +47,7 @@ export const successfulVotedReview = (button)=>{
   let currentVotes = button.innerText.split(' ')[0]
   const isPressed =  button.className === 'button' 
   isPressed ? button.className='button pressed' : button.className='button'
-  isPressed ? button.innerText = `${+currentVotes + 1 } Votes`: button.innerText = `${+currentVotes - 1 } Votes`
+  isPressed ? button.innerText = `${+currentVotes + 1 } Vote(s)`: button.innerText = `${+currentVotes - 1 } Vote(s)`
 }
 
 export const fetchDog = ()=>{
