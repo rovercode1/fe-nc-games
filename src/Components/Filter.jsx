@@ -3,7 +3,7 @@ import { fetchCategories, fetchReviewBySort } from "../api";
 import {capitalizeFirstLetter} from '../utils/utils'
 import '../styles/FilterBar.css'
 
-export default function FilterBar({setSearchParams, setReviews, setIsLoadingReviews, isLoadingFilters, setIsLoadingFilters }) {
+export default function Filter({setSearchParams, setReviews, setIsLoadingReviews, isLoadingFilters, setIsLoadingFilters }) {
   const [categories, setCategory] = useState([]);
   const sortBy =[
     "date",
@@ -62,7 +62,7 @@ export default function FilterBar({setSearchParams, setReviews, setIsLoadingRevi
 
   const displayFilterBar = ()=>{
     return (
-      <section id="filter-bar" className="responsive-container filter-bar">
+      <section id="filter-bar" className="filter-bar">
         <form
           id="listing-form"
           onSubmit={handleSubmit}>

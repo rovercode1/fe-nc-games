@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Collapse from "react-bootstrap/Collapse";
 import ReactTimeAgo from "react-time-ago";
 import CategoryMenu from "./CategoryMenu";
-import FilterBar from "./FilterBar";
+import Filter from "./Filter";
 import VotesButton from "./VotesButton";
 import { fetchAllReviews } from "../api";
 import { loadingReviews } from "../utils/loadingData";
@@ -13,6 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function ArticleList({ reviews, setReviews }) {
   const [isLoadingReviews, setIsLoadingReviews] = useState(false);
   const [isLoadingFilters, setIsLoadingFilters] = useState(false);
+  const [open, setOpen] = useState(false);
   let [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
@@ -22,6 +25,45 @@ export default function ArticleList({ reviews, setReviews }) {
       setIsLoadingReviews(false);
     });
   }, [setReviews]);
+
+  const displayDropdown = () => {
+    return (
+      <section id="dropdown">
+        <div>
+          <div>
+          <Button
+            onClick={() => setOpen(!open)}
+            aria-controls="example-collapse-text"
+            aria-expanded={open}
+          >
+            click
+          </Button>
+          </div>
+
+          <Collapse in={open}>
+            <div>
+              <div id="example-collapse-text">
+                <CategoryMenu
+                  isLoadingReviews={isLoadingReviews}
+                  isLoadingFilters={isLoadingFilters}
+                />
+                <Filter
+                  searchParams={searchParams}
+                  setReviews={setReviews}
+                  setSearchParams={setSearchParams}
+                  setIsLoadingReviews={setIsLoadingReviews}
+                  isLoadingReviews={isLoadingReviews}
+                  isLoadingFilters={isLoadingFilters}
+                  setIsLoadingFilters={setIsLoadingFilters}
+                />
+              </div>
+            </div>
+          </Collapse>
+
+        </div>
+      </section>
+    );
+  };
 
   const displayReviewCard = (review) => {
     return (
@@ -36,7 +78,7 @@ export default function ArticleList({ reviews, setReviews }) {
           </p>
           <p>
             Posted
-             <ReactTimeAgo date={new Date(review.created_at)} locale="en-US" />
+            <ReactTimeAgo date={new Date(review.created_at)} locale="en-US" />
           </p>
         </div>
         <div className="review-body">
@@ -46,7 +88,7 @@ export default function ArticleList({ reviews, setReviews }) {
           <div className="review-bottom">
             <h3>{review.title}</h3>
             <div className="review-card-button">
-              <VotesButton review={review}/>
+              <VotesButton review={review} />
               <Link to={`/reviews/${review.review_id}`}>
                 <button className="button">
                   {review.comment_count} Comments
@@ -71,19 +113,8 @@ export default function ArticleList({ reviews, setReviews }) {
 
   return (
     <>
-      <CategoryMenu
-        isLoadingReviews={isLoadingReviews}
-        isLoadingFilters={isLoadingFilters}
-      />
-      <FilterBar
-        searchParams={searchParams}
-        setReviews={setReviews}
-        setSearchParams={setSearchParams}
-        setIsLoadingReviews={setIsLoadingReviews}
-        isLoadingReviews={isLoadingReviews}
-        isLoadingFilters={isLoadingFilters}
-        setIsLoadingFilters={setIsLoadingFilters}
-      />
+      {/* {displayDropdown()} */}
+
       {isLoadingReviews || isLoadingFilters
         ? loadingReviews()
         : displayReviews()}

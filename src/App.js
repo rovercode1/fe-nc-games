@@ -13,7 +13,7 @@ function App() {
   const [reviews, setReviews] = useState([]);
   return (
     <div className="App">
-      <Header />
+      <Header setReviews={setReviews}/>
       <Routes>
         <Route path="*" element={<ErrorPage />} />
         <Route

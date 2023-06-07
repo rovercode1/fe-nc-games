@@ -4,15 +4,18 @@
   Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+body{
+  background: #DAE0E6;
+}
+
 #header {
   margin-bottom: 70px;
   display: flex;
   margin: auto;
   padding: 10px;
-  background: #eeeeee;
+  background: #fff;
   margin-bottom: 20px;
 }
-
 
 
 #header > h1 {
@@ -29,6 +32,11 @@
 #header > a > h1 {
   font-size: 20px;
   margin-right: 10px;
+}
+
+#navbar{
+  padding: 0px 50px;
+  font-size: 18px;
 }
 
 #endpoints {
@@ -52,6 +60,8 @@
   font-family: monospace;
   font-size: 1em;
 }
+
+
 
 .exmapleCode{
   background: #2e2e39;
@@ -83,7 +93,7 @@
 #loading-dog {
   width: 300px;
   height: 300px;
-  background: #e7e7e7;
+  background: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,7 +103,8 @@
 }
 
 #loading-filter-bar {
-  background: #e7e7e7;
+  border-radius: 5px;
+  background: #ffffff;
   height: 103px;
   width: 100%;
   display: flex;
@@ -156,7 +167,7 @@
 }
 
 #loading-post-comment {
-  background: #e7e7e7;
+  background: #ffffff;
   height: 96px;
   margin: 10px;
   border-radius: 5px;

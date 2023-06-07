@@ -1,11 +1,25 @@
 #filter-bar{
-  padding: 20px;
+  padding: 10px;
   font-size: 20px;
 }
 
+#nav-title{
+  padding: 4px 16px;
+  margin: 0px;
+  border-bottom: 1px solid #cacaca;
+  font-size: 12px;
+  color: #b2b2b2;
+}
+
 .filter-bar{
-  padding: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border-radius: 5px;
   font-size: 20px;
+}
+
+.offcanvas.offcanvas-top.show {
+  height: 24vh;
 }
 
 #listing-form{
@@ -13,14 +27,17 @@
   margin: auto;
   flex-direction: row;
   justify-content: space-between;
-  background: #e7e7e7;
+  background: #ffffff;
   padding: 13px;
   border-radius: 5px;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .input-box{
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin: 0px 20px;
 }
 
 .input-box select{
